@@ -3,7 +3,7 @@ import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import moment from "moment";
-import Calendar from "../../components/Calendar/index.js";
+import Calendar from "../../components/Calendar/calendar/index";
 
 export function AdminProfile() {
   const [value, setValue] = useState(moment());

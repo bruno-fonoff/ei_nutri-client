@@ -1,13 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
 
-import React, { useState } from "react";
-import moment from "moment";
-import Calendar from "../../components/Calendar/index.js";
-
 export function Home() {
-  const [value, setValue] = useState(moment());
-
   return (
     <div className="bg-amber-600 text-white h-screen">
       <div className="flex justify-center pt-52">
@@ -31,9 +25,6 @@ export function Home() {
             </button>
           </Link>
         </div>
-      </div>
-      <div>
-        <Calendar value={value} onChange={setValue} />
       </div>
     </div>
   );
