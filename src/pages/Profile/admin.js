@@ -2,8 +2,11 @@ import { useEffect, useState, useContext } from "react";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
+import moment from "moment";
+import Calendar from "../../components/Calendar/calendar/index";
 
-export function Profile() {
+export function AdminProfile() {
+  const [value, setValue] = useState(moment());
   // const [user, setUser] = useState({ name: "", email: "" });
   const navigate = useNavigate();
   // useEffect(() => {
@@ -27,6 +30,9 @@ export function Profile() {
       <h1>{loggedInUser.user.name}</h1>
       <p>{loggedInUser.user.email}</p>
       <button onClick={handleLogOut}>Sair</button>
+      <div>
+        <Calendar value={value} onChange={setValue} />
+      </div>
     </>
   );
 }

@@ -18,6 +18,5 @@ export default function dayStyles(day, value) {
   if (beforeToday(day)) return "before";
   if (isSelected(day, value)) return "selected";
   if (isToday(day)) return "today";
-
   return "";
 }
