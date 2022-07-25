@@ -8,7 +8,9 @@ import { ErrorPage } from "./pages/ErrorPage";
 
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
-function App() {
+import "./global.css";
+
+export function App() {
   return (
     <>
       <AuthContextComponent>
@@ -27,5 +29,3 @@ function App() {
     </>
   );
 }
-
-export default App;
