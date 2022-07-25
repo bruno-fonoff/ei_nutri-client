@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import moment from "moment";
-import "../../components/Calendar/styles.css";
-import Calendar from "../../components/Calendar/index.js";
+import "./styles.css";
+import Calendar from "./calendar";
 
-export function Home() {
+export default function App() {
   const [value, setValue] = useState(moment());
   return (
-    <>
-      <h1>HOME</h1>
+    <div>
       <Calendar value={value} onChange={setValue} />
-    </>
+    </div>
   );
 }
