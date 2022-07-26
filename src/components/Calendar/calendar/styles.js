@@ -10,7 +10,7 @@ function isToday(day) {
 }
 export function isSunSat(day) {
   if ([day].includes("Sat")) {
-    console.log("fd");
+    // console.log("fd");
   }
 }
 
