@@ -7,11 +7,11 @@ import "./global.css";
 import { PatientUser } from "./pages/User/user";
 import { NutriUser } from "./pages/User/admin";
 import { NutriLogin } from "./pages/Login/admin";
-import { UserLogin } from "./pages/Login/user";
-import { UserSignup } from "./pages/Signup/user";
-import { AdminSignup } from "./pages/Signup/admin";
-import { UserProfile } from "./pages/Profile/user";
-import { AdminProfile } from "./pages/Profile/admin";
+import { PatientLogin } from "./pages/Login/user";
+import { PatientSignup } from "./pages/Signup/user";
+import { NutriSignup } from "./pages/Signup/admin";
+import { PatientProfile } from "./pages/Profile/user";
+import { NutriProfile } from "./pages/Profile/admin";
 
 export function App() {
   return (
@@ -21,19 +21,19 @@ export function App() {
           <Route path="/" element={<Home />} />
 
           <Route path="/user" element={<PatientUser />} />
-          <Route path="/user/login" element={<UserLogin />} />
-          <Route path="/user/signup" element={<UserSignup />} />
+          <Route path="/user/login" element={<PatientLogin />} />
+          <Route path="/user/signup" element={<PatientSignup />} />
           <Route
             path="/user/profile"
-            element={<ProtectedRoute component={<UserProfile />} />}
+            element={<ProtectedRoute component={PatientProfile} />}
           />
 
           <Route path="/admin" element={<NutriUser />} />
           <Route path="/admin/login" element={<NutriLogin />} />
-          <Route path="/admin/signup" element={<AdminSignup />} />
+          <Route path="/admin/signup" element={<NutriSignup />} />
           <Route
             path="/admin/profile"
-            element={<ProtectedRoute component={<AdminProfile />} />}
+            element={<ProtectedRoute component={NutriProfile} />}
           />
 
           <Route path="*" element={<ErrorPage />} />

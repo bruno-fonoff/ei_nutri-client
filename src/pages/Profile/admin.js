@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/authContext";
 import moment from "moment";
 import Calendar from "../../components/Calendar/calendar/index";
 
-export function AdminProfile() {
+export function NutriProfile() {
   const [value, setValue] = useState(moment());
   // const [user, setUser] = useState({ name: "", email: "" });
   const navigate = useNavigate();
