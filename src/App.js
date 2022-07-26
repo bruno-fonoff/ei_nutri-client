@@ -12,6 +12,7 @@ import { UserSignup } from "./pages/Signup/user";
 import { AdminSignup } from "./pages/Signup/admin";
 import { UserProfile } from "./pages/Profile/user";
 import { AdminProfile } from "./pages/Profile/admin";
+import { Teste } from "./pages/Teste";
 
 export function App() {
   return (
@@ -19,6 +20,8 @@ export function App() {
       <AuthContextComponent>
         <Routes>
           <Route path="/" element={<Home />} />
+
+          <Route path="/teste" element={<Teste />} />
 
           <Route path="/user" element={<PatientUser />} />
           <Route path="/user/login" element={<UserLogin />} />
