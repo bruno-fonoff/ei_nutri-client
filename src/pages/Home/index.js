@@ -4,8 +4,8 @@ import logo from "../../assets/images/ei_nutri_logo.jpg";
 export function Home() {
   return (
     <div className="bg-amber-600 text-white h-screen">
-      <div className="sm:flex justify-center pt-52">
-        <img src={logo} alt="ei nutri logo" className="sm:h-24 sm:rounded-full" />
+      <div className="flex justify-center pt-52">
+        <img src={logo} alt="ei nutri logo" className="sm:h-24 md:48 lg:h-56 rounded-full" />
       </div>
       <div>
         <h3 className="text-2xl mt-12 text-center">Qual o seu perfil?</h3>

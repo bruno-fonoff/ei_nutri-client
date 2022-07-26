@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { api } from "../../api/api";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import logo from "../../assets/images/ei_nutri_logo.jpg";
 
 export function PatientSignup() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
     email: "",
+    age: "",
+    weight: "",
+    height: "",
+    whyAreYouHere: "",
     password: "",
     confirmPassword: "",
   });
@@ -39,110 +44,185 @@ export function PatientSignup() {
 
     try {
       const imgURL = await handleUpload();
-      const response = await api.post("user/signup", { ...form, img: imgURL });
-      console.log(response.data);
+      const response = await api.post("/user/signup", { ...form, img: imgURL });
+      console.log(response);
 
-      navigate("/user/profile");
+      navigate("/user/login");
     } catch (error) {
       console.log(error);
     }
   }
+  console.log(form);
 
   return (
-    <div className="w-full max-w-xs">
-      <form
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-        onSubmit={handleSubmit}
-      >
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="formName"
-          >
-            Nome:
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="formName"
-            name="name"
-            type="text"
-            value={form.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="formImg"
-          >
-            Sua foto de perfil:
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="file"
-            id="formImg"
-            onChange={handleImage}
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="formEmail"
-          >
-            E-mail:
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="formEmail"
-            name="email"
-            type="email"
-            value={form.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="formPassword"
-          >
-            Senha:
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="formPassword"
-            name="password"
-            type="password"
-            value={form.password}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="formConfirmPassword"
-          >
-            Confirmação de senha
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="formConfirmPassword"
-            type="password"
-            name="confirmPassword"
-            value={form.confirmPassword}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <Link to="/user/profile">
+    <div className="bg-amber-600 text-white h-screen w-full">
+      <div className="flex justify-center pt-12">
+        <img src={logo} alt="ei nutri logo" className="h-12 rounded-full" />
+      </div>
+      <div>
+        <form
+          className="shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          onSubmit={handleSubmit}
+        >
+          <div className="mb-4">
+            <label className="block text-sm font-bold mb-2" htmlFor="formName">
+              Nome:
+            </label>
+            <input
+              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="formName"
+              name="name"
+              type="text"
+              value={form.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-bold mb-2" htmlFor="formImg">
+              Sua foto de perfil:
+            </label>
+            <input
+              className="shadow appearance-none border rounded-full w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+              type="file"
+              id="formImg"
+              onChange={handleImage}
+            />
+          </div>
+
+          <div className="w-full mb-6">
+            <label className="block text-sm font-bold mb-2" htmlFor="formObj">
+              Qual seu objetivo?
+            </label>
+            <div className="relative">
+              <select
+                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="formObj"
+                type="text"
+                name='whyAreYouHere'
+                value={form.whyAreYouHere}
+                onChange={handleChange}
+              >
+                <option value="Saúde">Saúde</option>
+                <option value="Controle de peso">Controle de peso</option>
+                <option value="Alergia alimentar">Alergia alimentar</option>
+                <option value="Problemas digestivos e/ou intestinais">Problemas digestivos e/ou intestinais</option>
+                <option value="Exame laboratorial alterado">Exame laboratorial alterado</option>
+                <option value="Outro">Outro</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg
+                  className="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex mb-4 justify-between">
+            <div className="w-1/4">
+              <label className="block text-sm font-bold mb-2" htmlFor="formAge">
+                Idade:
+              </label>
+              <input
+                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="formAge"
+                name="age"
+                type="age"
+                value={form.age}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="w-1/4">
+              <label
+                className="block text-sm font-bold mb-2"
+                htmlFor="formWeight"
+              >
+                Peso:
+              </label>
+              <input
+                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="formWeight"
+                name="weight"
+                type="weight"
+                value={form.weight}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="w-1/4">
+              <label
+                className="block text-sm font-bold mb-2"
+                htmlFor="formHeight"
+              >
+                Altura:
+              </label>
+              <input
+                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="formHeight"
+                name="height"
+                type="height"
+                value={form.height}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-bold mb-2" htmlFor="formEmail">
+              E-mail:
+            </label>
+            <input
+              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="formEmail"
+              name="email"
+              type="email"
+              value={form.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              className="block text-sm font-bold mb-2"
+              htmlFor="formPassword"
+            >
+              Senha:
+            </label>
+            <input
+              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="formPassword"
+              name="password"
+              type="password"
+              value={form.password}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              className="block text-sm font-bold mb-2"
+              htmlFor="formConfirmPassword"
+            >
+              Confirmação de senha
+            </label>
+            <input
+              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="formConfirmPassword"
+              type="password"
+              name="confirmPassword"
+              value={form.confirmPassword}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
             <button
-              className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+              className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full"
               type="submit"
             >
               Cadastrar
             </button>
-          </Link>
-        </div>
-      </form>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

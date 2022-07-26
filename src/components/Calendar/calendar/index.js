@@ -6,13 +6,23 @@ import dayStyles, { beforeToday, isSunSat } from "./styles.js";
 import CalendarHeader from "./header";
 import "moment/locale/pt-br";
 
-export default function Calendar({ value, onChange }) {
+import setDate from "date-fns/setDate";
+import setHours from "date-fns/setHours";
+
+export default function Calendar({ value, onChange, form, setForm }) {
   const [calendar, setCalendar] = useState([]);
   const [daySelected, setDaySelected] = useState([]);
 
+  console.log(form);
+  const resultDate = setDate(new Date(2014, 8, 1), 30);
+  // console.log(resultDate)
+  const resultHour = setHours(new Date(2014, 8, 1, 11, 30), form);
+  console.log(resultHour);
+
   function handleAddDay(day) {
     setDaySelected(day.format("LLL"));
-    console.log(day);
+    const dayNumbers = day.toArray();
+    console.log(dayNumbers);
   }
   useEffect(() => {
     setCalendar(buildCalendar(value));
@@ -33,7 +43,7 @@ export default function Calendar({ value, onChange }) {
           </div>
           {calendar.map((week) => (
             <div key={week}>
-              {console.log(week[0])}
+              {/* {console.log(week[0])} */}
               {week.map((day, index) => (
                 <div
                   key={index}
