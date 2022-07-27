@@ -11,7 +11,6 @@ export function PatientSignup() {
     age: "",
     weight: "",
     height: "",
-<<<<<<< HEAD
     whyAreYouHere: [
       "Health",
       "Weight Management",
@@ -21,9 +20,6 @@ export function PatientSignup() {
       "Abnormal Lab Values",
       "Other",
     ],
-=======
-    whyAreYouHere: "",
->>>>>>> 99d4568a242c332970839bef4ade0c2eca575edc
     password: "",
     confirmPassword: "",
   });
@@ -68,11 +64,7 @@ export function PatientSignup() {
 
   return (
     <div className="bg-amber-600 text-white h-screen w-full">
-<<<<<<< HEAD
       <div className="flex justify-center pt-12 pb-12">
-=======
-      <div className="flex justify-center pt-12">
->>>>>>> 99d4568a242c332970839bef4ade0c2eca575edc
         <img src={logo} alt="ei nutri logo" className="h-12 rounded-full" />
       </div>
       <div>
@@ -85,11 +77,7 @@ export function PatientSignup() {
               Nome:
             </label>
             <input
-<<<<<<< HEAD
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-=======
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
->>>>>>> 99d4568a242c332970839bef4ade0c2eca575edc
               id="formName"
               name="name"
               type="text"
@@ -102,11 +90,7 @@ export function PatientSignup() {
               Sua foto de perfil:
             </label>
             <input
-<<<<<<< HEAD
               className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-=======
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
->>>>>>> 99d4568a242c332970839bef4ade0c2eca575edc
               type="file"
               id="formImg"
               onChange={handleImage}
@@ -119,35 +103,23 @@ export function PatientSignup() {
             </label>
             <div className="relative">
               <select
-<<<<<<< HEAD
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="formObj"
-                type="text"
-                value={form.whyAreYouHere}
-                onChange={handleChange}
-              >
-                <option value="Health">Health</option>
-                <option value="Weight">Weight Management</option>
-                <option value="Food allergy">Food allergy</option>
-                <option value="Digestive Issues">Digestive Issues</option>
-                <option value="Meal Planning">Meal Planning</option>
-                <option value="Abnormal Lab Values">Abnormal Lab Values</option>
-                <option value="Other">Other</option>
-=======
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="formObj"
                 type="text"
-                name='whyAreYouHere'
+                name="whyAreYouHere"
                 value={form.whyAreYouHere}
                 onChange={handleChange}
               >
                 <option value="Saúde">Saúde</option>
                 <option value="Controle de peso">Controle de peso</option>
                 <option value="Alergia alimentar">Alergia alimentar</option>
-                <option value="Problemas digestivos e/ou intestinais">Problemas digestivos e/ou intestinais</option>
-                <option value="Exame laboratorial alterado">Exame laboratorial alterado</option>
+                <option value="Problemas digestivos e/ou intestinais">
+                  Problemas digestivos e/ou intestinais
+                </option>
+                <option value="Exame laboratorial alterado">
+                  Exame laboratorial alterado
+                </option>
                 <option value="Outro">Outro</option>
->>>>>>> 99d4568a242c332970839bef4ade0c2eca575edc
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg
@@ -167,11 +139,7 @@ export function PatientSignup() {
                 Idade:
               </label>
               <input
-<<<<<<< HEAD
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-=======
-                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
->>>>>>> 99d4568a242c332970839bef4ade0c2eca575edc
                 id="formAge"
                 name="age"
                 type="age"
@@ -187,11 +155,7 @@ export function PatientSignup() {
                 Peso:
               </label>
               <input
-<<<<<<< HEAD
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-=======
-                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
->>>>>>> 99d4568a242c332970839bef4ade0c2eca575edc
                 id="formWeight"
                 name="weight"
                 type="weight"
@@ -207,11 +171,7 @@ export function PatientSignup() {
                 Altura:
               </label>
               <input
-<<<<<<< HEAD
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-=======
                 className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
->>>>>>> 99d4568a242c332970839bef4ade0c2eca575edc
                 id="formHeight"
                 name="height"
                 type="height"
@@ -225,11 +185,7 @@ export function PatientSignup() {
               E-mail:
             </label>
             <input
-<<<<<<< HEAD
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-=======
               className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
->>>>>>> 99d4568a242c332970839bef4ade0c2eca575edc
               id="formEmail"
               name="email"
               type="email"
@@ -245,11 +201,7 @@ export function PatientSignup() {
               Senha:
             </label>
             <input
-<<<<<<< HEAD
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-=======
               className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
->>>>>>> 99d4568a242c332970839bef4ade0c2eca575edc
               id="formPassword"
               name="password"
               type="password"
@@ -265,11 +217,7 @@ export function PatientSignup() {
               Confirmação de senha
             </label>
             <input
-<<<<<<< HEAD
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-=======
               className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
->>>>>>> 99d4568a242c332970839bef4ade0c2eca575edc
               id="formConfirmPassword"
               type="password"
               name="confirmPassword"

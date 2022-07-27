@@ -14,8 +14,6 @@ import { PatientProfile } from "./pages/Profile/user";
 import { NutriProfile } from "./pages/Profile/admin";
 import { Teste } from "./pages/Teste";
 
-import { Teste } from './components/Calendar/rota-teste';
-
 export function App() {
   return (
     <>
@@ -42,8 +40,6 @@ export function App() {
           />
 
           <Route path="*" element={<ErrorPage />} />
-
-          <Route path='/teste' element={<Teste />} />
         </Routes>
       </AuthContextComponent>
     </>
