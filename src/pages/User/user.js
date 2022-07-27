@@ -8,19 +8,26 @@ export function PatientUser() {
         <img src={logo} alt="ei nutri logo" className="h-24 rounded-full" />
       </div>
       <div>
-        <h3 className="text-2xl mt-12 text-center">Tela do paciente</h3>
+        <h3 
+        className="font-bold mb-2 text-2xl mt-12 text-center">O que você quer fazer?</h3>
       </div>
       <div className="flex-col text-center text-black mt-8 justify-center">
         <div>
           <Link to="/user/signup">
-            <button className="items-center justify-center px-9 py-2 border border-transparent text-base font-medium mb-2 rounded-full  bg-indigo-100 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100 duration-300">
+            <button
+              className="
+            items-center justify-center px-9 py-2 border border-transparent text-base font-medium mb-2 rounded-full  bg-purple-700 hover:bg-purple-400 transition ease-in-out delay-150 text-white font-bold hover:-translate-x-1 hover:scale-110  duration-300"
+            >
               Cadastrar
             </button>
           </Link>
         </div>
         <div>
           <Link to="/user/login">
-            <button className="items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-full  bg-indigo-100 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100 duration-300">
+            <button
+              className="
+            items-center justify-center px-12 py-2 border border-transparent text-base font-medium mb-2 rounded-full  bg-purple-700 hover:bg-purple-400 transition ease-in-out delay-150 text-white font-bold hover:-translate-x-1 hover:scale-110  duration-300"
+            >
               Entrar
             </button>
           </Link>
