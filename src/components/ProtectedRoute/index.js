@@ -12,5 +12,5 @@ export function ProtectedRoute(props) {
     return <Component />;
   }
 
-  return <Navigate to="/login" />;
+  return <Navigate to="/" />;
 }

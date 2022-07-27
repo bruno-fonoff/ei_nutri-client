@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/authContext";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 
-export function UserLogin() {
+export function PatientLogin() {
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -26,7 +26,7 @@ export function UserLogin() {
 
       localStorage.setItem("loggedInUser", JSON.stringify(response.data));
 
-      navigate("/profile");
+      navigate("/user/profile");
     } catch (error) {
       console.log(error);
     }

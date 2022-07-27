@@ -3,7 +3,7 @@ import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 
-export function UserProfile() {
+export function PatientProfile() {
   // const [user, setUser] = useState({ name: "", email: "" });
   const navigate = useNavigate();
   // useEffect(() => {
