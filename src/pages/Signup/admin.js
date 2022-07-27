@@ -5,26 +5,8 @@ import { useForm } from "react-hook-form";
 
 export function NutriSignup() {
   const { register, setValue, setFocus } = useForm();
-
-  const checkCEP = (e) => {
-    const cep = e.target.value.replace(/\D/g, "");
-
-    fetch(`https://viacep.com.br/ws/${cep}/json/`)
-      .then((res) => res.json())
-      .then((data) => {
-        const response = data;
-        console.log(response);
-
-        setValue("street", data.logradouro);
-        setValue("neighborhood", data.bairro);
-        setValue("city", data.localidade);
-        setValue("uf", data.uf);
-        setFocus("number");
-        console.log(data.logradouro);
-      });
-  };
-
   const navigate = useNavigate();
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -44,6 +26,31 @@ export function NutriSignup() {
     zipcode: "",
     uf: "",
   });
+
+  const checkCEP = (e) => {
+    const cep = e.target.value.replace(/\D/g, "");
+
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then((res) => res.json())
+      .then((data) => {
+        const response = data;
+        console.log(response);
+
+        setValue("street", data.logradouro);
+        setValue("neighborhood", data.bairro);
+        setValue("city", data.localidade);
+        setValue("uf", data.uf);
+        // setAddress("zipcode", data.cep);
+        setAddress("street", data.logradouro);
+        setAddress("neighborhood", data.bairro);
+        setAddress("city", data.localidade);
+        setAddress("uf", data.uf);
+
+        // console.log(address);
+      });
+    console.log(address);
+  };
+  // console.log(address);
 
   function handleAddress(e) {
     setAddress({ ...address, [e.target.name]: e.target.value });

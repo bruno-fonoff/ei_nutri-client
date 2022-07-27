@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
 import returnBtn from "../../assets/images/voltar.png";
 
-export function PatientSignup() {
+export function EditPatientProfile() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -13,11 +14,22 @@ export function PatientSignup() {
     weight: "",
     height: "",
     whyAreYouHere: "",
-    password: "",
-    confirmPassword: "",
   });
 
   const [img, setImg] = useState("");
+
+  useEffect(() => {
+    async function fetchUserProfile() {
+      try {
+        const response = await api.get("/user/profile");
+        setForm(response.data.user);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchUserProfile();
+  }, []);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -44,31 +56,35 @@ export function PatientSignup() {
     e.preventDefault();
 
     try {
+      const clone = { ...form };
+      delete clone._id;
       const imgURL = await handleUpload();
-      const response = await api.post("/user/signup", { ...form, img: imgURL });
+      const response = await api.patch("/user/update-profile", {
+        ...form,
+        img: imgURL,
+      });
       console.log(response);
-
-      navigate("/user/login");
+      navigate("/user/profile");
     } catch (error) {
       console.log(error);
     }
   }
-  console.log(form);
 
-  return (
+  return loading ? (
+    <div className="spinner-border text-danger" role="status"></div>
+  ) : (
     <div className="bg-amber-600 text-white h-screen w-full">
       <div className="flex justify-center pt-12">
         <img src={logo} alt="ei nutri logo" className="h-12 rounded-full" />
       </div>
       <div>
-        <Link to="/user">
+        <Link to="/user/profile">
           <img
             src={returnBtn}
             alt="retornar pagina"
             className="h-8 rounded-full ml-8"
           />
         </Link>
-
         <form
           className="shadow-md rounded px-8 pb-8 mb-4"
           onSubmit={handleSubmit}
@@ -83,6 +99,19 @@ export function PatientSignup() {
               name="name"
               type="text"
               value={form.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-bold mb-2" htmlFor="formEmail">
+              E-mail:
+            </label>
+            <input
+              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="formEmail"
+              name="email"
+              type="email"
+              value={form.email}
               onChange={handleChange}
             />
           </div>
@@ -133,7 +162,6 @@ export function PatientSignup() {
               </div>
             </div>
           </div>
-
           <div className="flex mb-4 justify-between">
             <div className="w-1/4">
               <label className="block text-sm font-bold mb-2" htmlFor="formAge">
@@ -181,57 +209,12 @@ export function PatientSignup() {
               />
             </div>
           </div>
-          <div className="mb-4">
-            <label className="block text-sm font-bold mb-2" htmlFor="formEmail">
-              E-mail:
-            </label>
-            <input
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="formEmail"
-              name="email"
-              type="email"
-              value={form.email}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-bold mb-2"
-              htmlFor="formPassword"
-            >
-              Senha:
-            </label>
-            <input
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="formPassword"
-              name="password"
-              type="password"
-              value={form.password}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-bold mb-2"
-              htmlFor="formConfirmPassword"
-            >
-              Confirmação de senha:
-            </label>
-            <input
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="formConfirmPassword"
-              type="password"
-              name="confirmPassword"
-              value={form.confirmPassword}
-              onChange={handleChange}
-            />
-          </div>
           <div>
             <button
               className="shadow bg-purple-700 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full w-full mt-2"
               type="submit"
             >
-              Criar cadastro
+              Atualizar cadastro
             </button>
           </div>
         </form>
