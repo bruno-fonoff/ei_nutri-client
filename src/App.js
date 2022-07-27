@@ -12,6 +12,7 @@ import { PatientSignup } from "./pages/Signup/user";
 import { NutriSignup } from "./pages/Signup/admin";
 import { PatientProfile } from "./pages/Profile/user";
 import { NutriProfile } from "./pages/Profile/admin";
+import { Teste } from "./pages/Teste";
 
 import { Teste } from "./components/Calendar/rota-teste";
 import { EditPatientProfile } from "./pages/EditProfile/user";
@@ -25,6 +26,8 @@ export function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path='/user/catalog' element={<Catalog />} />
+
+          <Route path="/teste" element={<Teste />} />
 
           <Route path="/user" element={<PatientUser />} />
           <Route path="/user/login" element={<PatientLogin />} />

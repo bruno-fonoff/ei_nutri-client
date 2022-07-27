@@ -11,7 +11,13 @@ import setHours from "date-fns/setHours";
 
 export default function Calendar({ value, onChange, form, setForm }) {
   const [calendar, setCalendar] = useState([]);
+  const [hour, setHour] = useState({ hour: "" });
   const [daySelected, setDaySelected] = useState([]);
+  // const hour = "10";
+
+  function handleHour(e) {
+    setHour(e.target.value);
+  }
 
   console.log(form);
   const resultDate = setDate(new Date(2014, 8, 1), 30);
@@ -20,9 +26,14 @@ export default function Calendar({ value, onChange, form, setForm }) {
   console.log(resultHour);
 
   function handleAddDay(day) {
+<<<<<<< HEAD:src/components/Calendar/index.js
+    setDaySelected(day.format("LL"));
+    console.log(day.hour(hour));
+=======
     setDaySelected(day.format("LLL"));
     const dayNumbers = day.toArray();
     console.log(dayNumbers);
+>>>>>>> 99d4568a242c332970839bef4ade0c2eca575edc:src/components/Calendar/calendar/index.js
   }
   useEffect(() => {
     setCalendar(buildCalendar(value));
@@ -30,7 +41,7 @@ export default function Calendar({ value, onChange, form, setForm }) {
 
   return (
     <>
-      <h1>{daySelected.toString().slice(0, 20)}</h1>
+      <h1>{daySelected.toString()}</h1>
       <div className="calendar">
         <CalendarHeader value={value} setValue={onChange} />
         <div className="body">
@@ -61,6 +72,19 @@ export default function Calendar({ value, onChange, form, setForm }) {
               ))}
             </div>
           ))}
+        </div>
+        <div>
+          <label>Escolha um Horário</label>
+          <select id="hour-input" name="hour" onChange={handleHour}>
+            <option value="8">08:00</option>
+            <option value="9">09:00</option>
+            <option value="10">10:00</option>
+            <option value="11">11:00</option>
+            <option value="14">14:00</option>
+            <option value="15">15:00</option>
+            <option value="16">16:00</option>
+            <option value="17">17:00</option>
+          </select>
         </div>
       </div>
     </>
