@@ -21,12 +21,12 @@ export function NutriLogin() {
     e.preventDefault();
 
     try {
-      const response = await api.post("/user/login", form);
+      const response = await api.post("/admin/login", form);
       setLoggedInUser({ ...response.data });
 
       localStorage.setItem("loggedInUser", JSON.stringify(response.data));
 
-      navigate("/profile");
+      navigate("/admin/profile");
     } catch (error) {
       console.log(error);
     }

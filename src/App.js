@@ -12,6 +12,7 @@ import { PatientSignup } from "./pages/Signup/user";
 import { NutriSignup } from "./pages/Signup/admin";
 import { PatientProfile } from "./pages/Profile/user";
 import { NutriProfile } from "./pages/Profile/admin";
+import { Teste } from "./pages/Teste";
 
 import { Teste } from './components/Calendar/rota-teste';
 
@@ -21,6 +22,8 @@ export function App() {
       <AuthContextComponent>
         <Routes>
           <Route path="/" element={<Home />} />
+
+          <Route path="/teste" element={<Teste />} />
 
           <Route path="/user" element={<PatientUser />} />
           <Route path="/user/login" element={<PatientLogin />} />
