@@ -26,14 +26,8 @@ export default function Calendar({ value, onChange, form, setForm }) {
   console.log(resultHour);
 
   function handleAddDay(day) {
-<<<<<<< HEAD:src/components/Calendar/index.js
     setDaySelected(day.format("LL"));
     console.log(day.hour(hour));
-=======
-    setDaySelected(day.format("LLL"));
-    const dayNumbers = day.toArray();
-    console.log(dayNumbers);
->>>>>>> 99d4568a242c332970839bef4ade0c2eca575edc:src/components/Calendar/calendar/index.js
   }
   useEffect(() => {
     setCalendar(buildCalendar(value));
