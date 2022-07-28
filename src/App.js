@@ -17,6 +17,7 @@ import { Catalog } from "./pages/Catalog";
 import { Footer } from "./components/Footer";
 import { GoToNutriProfile } from "./pages/UserGoToNutriProfile";
 import { EditNutriProfile } from "./pages/EditProfile/admin";
+import { CreateReview } from "./pages/CreateReview";
 
 export function App() {
   return (
@@ -25,6 +26,10 @@ export function App() {
         <Routes>
           <Route path="/" element={<Home />} />
 
+          <Route
+            path="/review/nutri-profile/review/:adminId"
+            element={<CreateReview />}
+          />
           <Route path="/user" element={<PatientUser />} />
           <Route path="/user/login" element={<PatientLogin />} />
           <Route path="/user/signup" element={<PatientSignup />} />
