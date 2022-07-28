@@ -5,7 +5,7 @@ export function NutriUser() {
   return (
     <div className="bg-amber-600 text-white h-screen">
       <div className="flex justify-center pt-52">
-        <img src={logo} alt="ei nutri logo" className="h-24 rounded-full" />
+        <img src={logo} alt="ei nutri logo" className="h-24 md:48 lg:h-56 rounded-full" />
       </div>
       <div>
         <h3 
