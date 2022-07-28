@@ -88,7 +88,6 @@ export function GoToNutriProfile() {
     <div className="spinner-border text-danger" role="status"></div>
   ) : (
     <div className="bg-amber-600 text-white h-screen w-full">
-      {" "}
       <div>
         <Toaster />
       </div>

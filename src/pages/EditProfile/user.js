@@ -117,7 +117,11 @@ export function EditPatientProfile() {
               Sua foto de perfil:
             </label>
             <input
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+              className="file:mr-4 file:py-2 file:px-4
+      file:rounded-full file:border-0
+      file:text-sm file:font-semibold
+      file:bg-violet-50 file:text-violet-700
+      hover:file:bg-violet-100 focus:ring-4 ring-purple-700 ring-inset  appearance-none  rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="file"
               id="formImg"
               onChange={handleImage}

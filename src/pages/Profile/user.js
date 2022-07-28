@@ -14,6 +14,7 @@ export function PatientProfile() {
     async function fetchUser() {
       const response = await api.get("/user/profile");
       setUser(response.data);
+      console.log(response.data);
     }
     fetchUser();
   }, []);
@@ -39,7 +40,7 @@ export function PatientProfile() {
     navigate("/");
   }
 
-  console.log(loggedInUser.user.nutritionist);
+  console.log(loggedInUser.user);
   console.log(loggedInUser.user.appointments);
   console.log(loggedInUser.user);
 
@@ -93,7 +94,6 @@ export function PatientProfile() {
           </button>
           <div className="block text-lg font-bold mt-6 mb-2 pl-4">
             <h2>Suas consultas:</h2>
-            {}
           </div>
           <div className="block text-lg font-bold mt-6 mb-2 pl-4">
             <h2>Seus reviews:</h2>
