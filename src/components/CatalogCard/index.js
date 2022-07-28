@@ -7,9 +7,13 @@ export function CatalogCard({ currentNutri }) {
     navigate(`/user/nutri-profile/${currentNutri._id}`);
   }
 
+  function GoToNutriReview() {
+    navigate(`/review/nutri-profile/review/${currentNutri._id}`);
+  }
+
   return (
     <div className="rounded px-8 pb-8">
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
+      <div className="max-w-sm rounded-lg overflow-hidden shadow-2xl p-2">
         <img
           src={currentNutri.img}
           alt="user profile"
@@ -32,9 +36,19 @@ export function CatalogCard({ currentNutri }) {
           <p>Telefone para contato: {currentNutri.phone}</p>
         </div>
         <div className="pt-4 pb-2">
-          <div>
+          <div className="flex justify-around">
+            <div className="text-3xl  text-purple-700">★★★★★</div>
             <button
-              className="shadow bg-purple-700 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full w-full"
+              className="h-10 mb-4 shadow bg-white  focus:shadow-outline focus:outline-none text-purple-700 font-bold py-2 px-4 rounded-full w-2/5"
+              onClick={GoToNutriReview}
+            >
+              Avaliações
+            </button>
+          </div>
+
+          <div className="flex justify-center">
+            <button
+              className="shadow bg-purple-700 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full w-3/4 h-10"
               onClick={GoToNutriProfile}
             >
               Agendar consulta
