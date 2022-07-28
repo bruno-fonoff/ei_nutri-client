@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import moment from "moment";
+// import moment from "moment";
 import "./styles.css";
 import buildCalendar from "./buildCalendar";
 import dayStyles, { beforeToday, isSunSat } from "./styles.js";
@@ -16,14 +16,13 @@ export default function Calendar({ value, onChange, form, setForm }) {
     setHour(e.target.value);
   }
 
-  console.log(form);
   // const resultDate = setDate(new Date(2014, 8, 1), 30);
   // // console.log(resultDate)
   // const resultHour = setHours(new Date(2014, 8, 1, 11, 30), form);
   // console.log(resultHour);
 
   function handleAddDay(day) {
-    setDaySelected(day.format("LL"));
+    setDaySelected(day.format("L"));
     console.log(day.hour(hour));
   }
   useEffect(() => {
@@ -67,8 +66,8 @@ export default function Calendar({ value, onChange, form, setForm }) {
         <div>
           <label>Escolha um Horário</label>
           <select id="hour-input" name="hour" onChange={handleHour}>
-            <option value="8">08:00</option>
-            <option value="9">09:00</option>
+            <option value="08">08:00</option>
+            <option value="09">09:00</option>
             <option value="10">10:00</option>
             <option value="11">11:00</option>
             <option value="14">14:00</option>
