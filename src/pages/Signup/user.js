@@ -3,6 +3,7 @@ import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
 import returnBtn from "../../assets/images/voltar.png";
+import toast, { Toaster } from 'react-hot-toast';
 
 export function PatientSignup() {
   const navigate = useNavigate();
@@ -45,15 +46,13 @@ export function PatientSignup() {
 
     try {
       const imgURL = await handleUpload();
-      const response = await api.post("/user/signup", { ...form, img: imgURL });
-      console.log(response);
-
+      await api.post("/user/signup", { ...form, img: imgURL });
       navigate("/user/login");
     } catch (error) {
       console.log(error);
+      toast.error("Campo vazio ou incompleto!");
     }
   }
-  console.log(form);
 
   return (
     <div className="bg-amber-600 text-white h-screen w-full">
@@ -61,6 +60,9 @@ export function PatientSignup() {
         <img src={logo} alt="ei nutri logo" className="h-12 rounded-full" />
       </div>
       <div>
+      <div>
+        <Toaster />
+      </div>
         <Link to="/user">
           <img
             src={returnBtn}
@@ -68,7 +70,6 @@ export function PatientSignup() {
             className="h-8 rounded-full ml-8"
           />
         </Link>
-
         <form className="rounded px-8 pb-8 mb-4" onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-sm font-bold mb-2" htmlFor="formName">
@@ -94,7 +95,6 @@ export function PatientSignup() {
               onChange={handleImage}
             />
           </div>
-
           <div className="w-full mb-6">
             <label className="block text-sm font-bold mb-2" htmlFor="formObj">
               Qual seu objetivo?
@@ -130,7 +130,6 @@ export function PatientSignup() {
               </div>
             </div>
           </div>
-
           <div className="flex mb-4 justify-between">
             <div className="w-1/4">
               <label className="block text-sm font-bold mb-2" htmlFor="formAge">

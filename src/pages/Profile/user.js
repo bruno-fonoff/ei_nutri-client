@@ -1,19 +1,23 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../contexts/authContext";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
 import toast, { Toaster } from "react-hot-toast";
 
 export function PatientProfile() {
   const [user, setUser] = useState({ name: "", email: "" });
   const navigate = useNavigate();
-  const { loggedInUser } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchUser() {
-      const response = await api.get("/user/profile");
-      setUser(response.data);
+      try {
+        const response = await api.get("/user/profile");
+        setUser(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
     }
     fetchUser();
   }, []);
@@ -39,11 +43,11 @@ export function PatientProfile() {
     navigate("/");
   }
 
-  console.log(loggedInUser.user.nutritionist);
-  console.log(loggedInUser.user.appointments);
-  console.log(loggedInUser.user);
+  console.log(user);
 
-  return (
+  return loading ? (
+    <div className="spinner-border text-danger" role="status"></div>
+  ) : (
     <div className="bg-amber-600 text-white h-screen w-full">
       <div className="flex justify-center pt-12 pb-12">
         <div>
@@ -54,12 +58,12 @@ export function PatientProfile() {
       <div className="rounded px-8 pt-6 pb-8 mb-4">
         <div className="flex mb-4">
           <img
-            src={loggedInUser.user.img}
+            src={user.user.img}
             alt="user profile"
             className="h-20 w-20 rounded-full"
           />
           <h1 className="block text-lg font-bold mb-2 pl-4 pt-6 mr-10">
-            Bem vindo, {loggedInUser.user.name} !
+            Bem vindo, {user.user.name} !
           </h1>
         </div>
         <div className="mb-8 flex justify-evenly">
