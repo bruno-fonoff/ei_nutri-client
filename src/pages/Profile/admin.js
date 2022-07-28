@@ -29,7 +29,7 @@ export function NutriProfile() {
 
   async function handleDelete() {
     try {
-      await api.delete("/user/disable-profile");
+      await api.delete("/admin/disable-profile");
       toast.success("Conta deletada com sucesso!");
     } catch (error) {}
     navigate("/");
@@ -43,20 +43,24 @@ export function NutriProfile() {
 
   return (
     <div className="bg-amber-600 text-white h-screen w-full">
-      <div className="flex justify-start pt-12 pb-12 ml-10">
+      <div className="flex justify-center pt-12 pb-12">
         <div>
           <Toaster />
         </div>
-        <img src={logo} alt="ei nutri logo" className="h-24 rounded-full" />
+        <img
+          src={logo}
+          alt="ei nutri logo"
+          className="sm:h-24 md:h-40 lg:h-56 rounded-full"
+        />
       </div>
       <div className=" rounded px-8 pt-6 pb-8 mb-4">
         <div className="flex mb-4">
           <img
             src={loggedInUser.user.img}
             alt="user profile"
-            className="h-16 rounded-lg"
+            className="sm:h-20 md:h-36 lg:h-36 rounded-full"
           />
-          <h1 className="block text-lg font-bold mb-2 pl-4 mr-24">
+          <h1 className="block sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 pl-4 sm:pt-6 md:pt-14 lg:pt-14 mr-10">
             Bem vindo, {loggedInUser.user.name} !
           </h1>
         </div>
@@ -74,7 +78,14 @@ export function NutriProfile() {
             Sair
           </button>
         </div>
-
+        <div className="flex justify-center">
+          <button
+            className="shadow bg-red-700 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mb-4 rounded-full w-40"
+            onClick={handleDelete}
+          >
+            Deletar conta
+          </button>
+        </div>
         <div>
           <div className="block text-lg font-bold mt-6 mb-2 pl-4">
             <h2>Consultas:</h2>
@@ -87,14 +98,6 @@ export function NutriProfile() {
           </div>
           <div className="block text-lg font-bold mt-6 mb-2 pl-4">
             <h2>Avaliações:</h2>
-          </div>
-          <div className="flex justify-center">
-            <button
-              className="shadow bg-red-700 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mb-4 rounded-full w-40"
-              onClick={handleDelete}
-            >
-              Deletar conta
-            </button>
           </div>
         </div>
       </div>

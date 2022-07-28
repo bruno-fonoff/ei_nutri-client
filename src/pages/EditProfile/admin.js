@@ -9,6 +9,7 @@ export function EditNutriProfile() {
   const [loading, setLoading] = useState(true);
   const { register, setValue, getValues, setFocus } = useForm();
   const navigate = useNavigate();
+  const [img, setImg] = useState("");
 
   const [form, setForm] = useState({
     name: "",
@@ -28,7 +29,6 @@ export function EditNutriProfile() {
     city: "",
     uf: "",
   });
-  const [img, setImg] = useState("");
 
   useEffect(() => {
     async function fetchAdminProfile() {
@@ -69,11 +69,10 @@ export function EditNutriProfile() {
         });
       });
   };
-  console.log(address);
   function handleAddress(e) {
     setAddress({ ...address, [e.target.name]: e.target.value });
-    console.log(address);
   }
+
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
@@ -116,23 +115,22 @@ export function EditNutriProfile() {
 
   return (
     <div className="bg-amber-600 text-white h-full w-full">
-      <div className="flex justify-between pt-6">
-        <div className="">
-          <Link to="/admin">
-            <img
-              src={returnBtn}
-              alt="retornar pagina"
-              className="h-8 rounded-full ml-8 "
-            />
-          </Link>
-        </div>
+      <div className="flex justify-center pt-12">
         <img
           src={logo}
           alt="ei nutri logo"
-          className="h-16 mr-40 rounded-full mb-6"
+          className="sm:h-24 md:h-40 lg:h-56 rounded-full"
         />
       </div>
-
+      <div>
+        <Link to="/admin/profile">
+          <img
+            src={returnBtn}
+            alt="retornar pagina"
+            className="h-12 rounded-full ml-8 mb-4"
+          />
+        </Link>
+      </div>
       <form className="rounded px-8 pb-8" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2" htmlFor="formName">

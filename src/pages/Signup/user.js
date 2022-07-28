@@ -57,7 +57,7 @@ export function PatientSignup() {
   return (
     <div className="bg-amber-600 text-white h-screen w-full">
       <div className="flex justify-center pt-12">
-        <img src={logo} alt="ei nutri logo" className="h-12 rounded-full" />
+        <img src={logo} alt="ei nutri logo" className="sm:h-24 md:h-40 lg:h-56 rounded-full" />
       </div>
       <div>
       <div>
@@ -67,7 +67,7 @@ export function PatientSignup() {
           <img
             src={returnBtn}
             alt="retornar pagina"
-            className="h-8 rounded-full ml-8"
+            className="h-12 rounded-full ml-8 mb-4"
           />
         </Link>
         <form className="rounded px-8 pb-8 mb-4" onSubmit={handleSubmit}>

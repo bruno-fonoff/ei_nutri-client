@@ -32,7 +32,7 @@ export default function Calendar({ value, onChange, setDateHour }) {
   }
 
   return (
-    <>
+    <div className='flex justify-center'>
       <div className="calendar pt-4">
         <CalendarHeader value={value} setValue={onChange} />
         <div className="body">
@@ -94,6 +94,6 @@ export default function Calendar({ value, onChange, setDateHour }) {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }

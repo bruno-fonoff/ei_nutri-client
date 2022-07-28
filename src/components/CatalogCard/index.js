@@ -8,7 +8,7 @@ export function CatalogCard({ currentNutri }) {
   }
 
   return (
-    <div className="rounded px-8 pb-8">
+    <div className="rounded px-8 pb-8 flex justify-center">
       <div className="max-w-sm rounded overflow-hidden shadow-lg">
         <img
           src={currentNutri.img}

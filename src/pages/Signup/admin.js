@@ -100,23 +100,22 @@ export function NutriSignup() {
 
   return (
     <div className="bg-amber-600 text-white h-full w-full">
-      <div className="flex justify-between pt-6">
-        <div className="">
-          <Link to="/admin">
-            <img
-              src={returnBtn}
-              alt="retornar pagina"
-              className="h-8 rounded-full ml-8 "
-            />
-          </Link>
-        </div>
+      <div className="flex justify-center pt-12">
         <img
           src={logo}
           alt="ei nutri logo"
-          className="h-16 mr-40 rounded-full mb-6"
+          className="sm:h-24 md:h-40 lg:h-56 rounded-full"
         />
       </div>
-
+      <div className="">
+        <Link to="/admin">
+          <img
+            src={returnBtn}
+            alt="retornar pagina"
+            className="h-12 rounded-full ml-8 mb-4"
+          />
+        </Link>
+      </div>
       <form className="rounded px-8 pb-8" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2" htmlFor="formName">
@@ -169,38 +168,43 @@ export function NutriSignup() {
           />
         </div>
         {/* --------------------------------------------------------------------------------- */}
-        <div className="flex mb-4 justify-between">
-          <div className="w-3/8 mr-4  ">
-            <label className="block text-sm font-bold mb-2" htmlFor="formPhone">
-              Telefone:
-            </label>
-            <input
-              className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="formPhone"
-              name="phone"
-              placeholder="Ex :  13 99999-9999"
-              required={true}
-              type="text"
-              value={form.phone}
-              onChange={handleChange}
-            />
-          </div>
-          {/* --------------------------------------------------------------------------------- */}
+        <div>
+          <div className="flex mb-4 justify-between">
+            <div className="w-1/3 mr-4  ">
+              <label
+                className="block text-sm font-bold mb-2"
+                htmlFor="formPhone"
+              >
+                Telefone:
+              </label>
+              <input
+                className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="formPhone"
+                name="phone"
+                placeholder="Ex :  13 99999-9999"
+                required={true}
+                type="text"
+                value={form.phone}
+                onChange={handleChange}
+              />
+            </div>
+            {/* --------------------------------------------------------------------------------- */}
 
-          <div className="w-3/8">
-            <label className="block text-sm font-bold mb-2" htmlFor="formCrn">
-              CRN:
-            </label>
-            <input
-              className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="formcrn"
-              name="crn"
-              placeholder="Ex :   9999"
-              required={true}
-              type="text"
-              value={form.crn}
-              onChange={handleChange}
-            />
+            <div className="w-1/3">
+              <label className="block text-sm font-bold mb-2" htmlFor="formCrn">
+                CRN:
+              </label>
+              <input
+                className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="formcrn"
+                name="crn"
+                placeholder="Ex :   9999"
+                required={true}
+                type="text"
+                value={form.crn}
+                onChange={handleChange}
+              />
+            </div>
           </div>
         </div>
 

@@ -7,10 +7,10 @@ import Calendar from "../../components/Calendar";
 import moment from "moment";
 import returnBtn from "../../assets/images/voltar.png";
 import toast, { Toaster } from "react-hot-toast";
-// import "moment/locale/pt-br";
-// import "../../components/Calendar/styles.css";
+import { useNavigate } from "react-router-dom";
 
 export function GoToNutriProfile() {
+  const navigate = useNavigate();
   const [value, setValue] = useState(moment());
   const { loggedInUser } = useContext(AuthContext);
   const { adminId } = useParams();
@@ -71,6 +71,7 @@ export function GoToNutriProfile() {
     try {
       await api.patch(`/user/nutri-added/${loggedInUser.user._id}/${adminId}`);
       toast.success("Consulta agendada!");
+      navigate("/user/profile");
     } catch (error) {
       console.log(error);
     }
@@ -78,20 +79,18 @@ export function GoToNutriProfile() {
 
   async function handleDate(e) {
     try {
-      const response = await api.patch("/user/update-profile", {
+      await api.patch("/user/update-profile", {
         ...userForm,
         appointments: [consulta],
       });
 
-      const response2 = await api.patch(
+      await api.patch(
         `/user/appointment-created/${adminId}`,
         {
           ...nutri,
           appointments: [consulta],
         }
       );
-      console.log(response);
-      console.log(response2);
     } catch (error) {
       console.log(error);
     }
@@ -105,13 +104,13 @@ export function GoToNutriProfile() {
         <Toaster />
       </div>
       <div className="flex justify-center pt-12">
-        <img src={logo} alt="ei nutri logo" className="h-12 rounded-full" />
+        <img src={logo} alt="ei nutri logo" className="sm:h-24 md:h-40 lg:h-56 rounded-full" />
       </div>
       <Link to="/user/catalog">
         <img
           src={returnBtn}
           alt="retornar pagina"
-          className="h-8 rounded-full ml-8"
+          className="h-12 rounded-full ml-8 mb-4"
         />
       </Link>
       <div className="flex justify-center px-5 pb-4 mt-4">
@@ -121,7 +120,7 @@ export function GoToNutriProfile() {
           className="h-24 w-24 rounded-full"
         />
       </div>
-      <div className="flex justify-center font-bold text-xl mb-2">
+      <div className="flex justify-center font-bold sm:text-lg md:text-xl lg:text-2xl mb-2">
         <p>
           Nutricionista: <span className="ml-2">{nutri.name}</span>
         </p>
