@@ -4,6 +4,7 @@ import moment from "moment";
 import "../../components/Calendar/styles.css";
 import Calendar from "../../components/Calendar/";
 import { useState } from "react";
+import { NavBar } from "../../components/NavBar";
 // import "../../../jquery.mask";
 
 export function Teste() {
@@ -32,6 +33,7 @@ export function Teste() {
 
   return (
     <>
+      <NavBar />
       <h1>PROFILE NUTRI</h1>
       <Calendar value={value} onChange={setValue} />
 

@@ -15,8 +15,8 @@ import { NutriProfile } from "./pages/Profile/admin";
 import { EditPatientProfile } from "./pages/EditProfile/user";
 import { Catalog } from "./pages/Catalog";
 import { Footer } from "./components/Footer";
-
 import { Teste } from "./pages/Teste";
+import { EditNutriProfile } from "./pages/EditProfile/admin";
 
 export function App() {
   return (
@@ -32,6 +32,7 @@ export function App() {
           <Route path="/user/login" element={<PatientLogin />} />
           <Route path="/user/signup" element={<PatientSignup />} />
           <Route path="/user/update-profile" element={<EditPatientProfile />} />
+          <Route path="/admin/update-profile" element={<EditNutriProfile />} />
           <Route
             path="/user/profile"
             element={<ProtectedRoute component={PatientProfile} />}
@@ -46,8 +47,6 @@ export function App() {
           />
 
           <Route path="*" element={<ErrorPage />} />
-
-          <Route path="/teste" element={<Teste />} />
         </Routes>
         <Footer />
       </AuthContextComponent>

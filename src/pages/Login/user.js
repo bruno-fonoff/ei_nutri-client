@@ -47,10 +47,7 @@ export function PatientLogin() {
             className="h-8 rounded-full ml-8"
           />
         </Link>
-        <form
-          className="shadow-md rounded px-8 pb-8 mb-4"
-          onSubmit={handleSubmit}
-        >
+        <form className="rounded px-8 pb-8 mb-4" onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-sm font-bold mb-2">Email:</label>
             <input
