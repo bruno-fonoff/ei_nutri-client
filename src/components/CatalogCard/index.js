@@ -7,8 +7,6 @@ export function CatalogCard({ currentNutri }) {
     navigate(`/user/nutri-profile/${currentNutri._id}`);
   }
 
-  console.log(currentNutri)
-
   return (
     <div className="rounded px-8 pb-8">
       <div className="max-w-sm rounded overflow-hidden shadow-lg">

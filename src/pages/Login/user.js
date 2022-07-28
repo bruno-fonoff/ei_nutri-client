@@ -4,6 +4,7 @@ import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
 import returnBtn from "../../assets/images/voltar.png";
+import toast, { Toaster } from "react-hot-toast";
 
 export function PatientLogin() {
   const [form, setForm] = useState({
@@ -21,16 +22,14 @@ export function PatientLogin() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     try {
       const response = await api.post("/user/login", form);
       setLoggedInUser({ ...response.data });
-
       localStorage.setItem("loggedInUser", JSON.stringify(response.data));
-
       navigate("/user/profile");
     } catch (error) {
       console.log(error);
+      toast.error("E-mail ou senha incorreto!");
     }
   }
 
@@ -40,6 +39,10 @@ export function PatientLogin() {
         <img src={logo} alt="ei nutri logo" className="h-12 rounded-full" />
       </div>
       <div>
+        <div>
+          <Toaster />
+        </div>
+
         <Link to="/user">
           <img
             src={returnBtn}

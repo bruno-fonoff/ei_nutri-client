@@ -4,6 +4,7 @@ import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
 import returnBtn from "../../assets/images/voltar.png";
+import toast, { Toaster } from "react-hot-toast";
 
 export function NutriLogin() {
   const [form, setForm] = useState({
@@ -25,12 +26,11 @@ export function NutriLogin() {
     try {
       const response = await api.post("/admin/login", form);
       setLoggedInUser({ ...response.data });
-
       localStorage.setItem("loggedInUser", JSON.stringify(response.data));
-
       navigate("/admin/profile");
     } catch (error) {
       console.log(error);
+      toast.error("Campo vazio ou incompleto!");
     }
   }
 
@@ -46,7 +46,9 @@ export function NutriLogin() {
           className="h-8 rounded-full ml-8"
         />
       </Link>
-
+      <div>
+        <Toaster />
+      </div>
       <form className="rounded px-8 pb-8 mb-4" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2">Email:</label>

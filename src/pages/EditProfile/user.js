@@ -3,6 +3,7 @@ import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
 import returnBtn from "../../assets/images/voltar.png";
+import toast, { Toaster } from "react-hot-toast";
 
 export function EditPatientProfile() {
   const navigate = useNavigate();
@@ -67,6 +68,7 @@ export function EditPatientProfile() {
       navigate("/user/profile");
     } catch (error) {
       console.log(error);
+      toast.error("Campo vazio ou incompleto!");
     }
   }
 
@@ -76,6 +78,9 @@ export function EditPatientProfile() {
     <div className="bg-amber-600 text-white h-screen w-full">
       <div className="flex justify-center pt-12">
         <img src={logo} alt="ei nutri logo" className="h-12 rounded-full" />
+      </div>
+      <div>
+        <Toaster />
       </div>
       <div>
         <Link to="/user/profile">
