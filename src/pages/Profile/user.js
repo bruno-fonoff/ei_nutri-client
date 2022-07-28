@@ -97,7 +97,6 @@ export function PatientProfile() {
           </button>
           <div className="block text-lg font-bold mt-6 mb-2 pl-4">
             <h2>Suas consultas:</h2>
-            {}
           </div>
           <div className="block text-lg font-bold mt-6 mb-2 pl-4">
             <h2>Seus reviews:</h2>
