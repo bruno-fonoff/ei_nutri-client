@@ -5,12 +5,13 @@ function isSelected(day, value) {
 export function beforeToday(day) {
   return day.isBefore(new Date(), "day");
 }
+
 function isToday(day) {
   return day.isSame(new Date(), "day");
 }
+
 export function isSunSat(day) {
   if ([day].includes("Sat")) {
-    // console.log("fd");
   }
 }
 

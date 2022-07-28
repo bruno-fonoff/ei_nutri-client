@@ -106,7 +106,7 @@ export function NutriSignup() {
     <div className="bg-amber-600 text-white h-full w-full">
       <div className="flex justify-between pt-6">
         <div className="">
-          <Link to="/user">
+          <Link to="/admin">
             <img
               src={returnBtn}
               alt="retornar pagina"

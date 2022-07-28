@@ -39,7 +39,7 @@ export function NutriLogin() {
       <div className="flex justify-center pt-12 pb-12">
         <img src={logo} alt="ei nutri logo" className="h-12 rounded-full" />
       </div>
-      <Link to="/user">
+      <Link to="/admin">
         <img
           src={returnBtn}
           alt="retornar pagina"
@@ -51,7 +51,7 @@ export function NutriLogin() {
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2">Email:</label>
           <input
-            className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
             type="email"
             name="email"
             value={form.email}
@@ -61,7 +61,7 @@ export function NutriLogin() {
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2">Senha:</label>
           <input
-            className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
             type="password"
             name="password"
             value={form.password}
