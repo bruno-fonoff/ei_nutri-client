@@ -11,11 +11,6 @@ export function PatientProfile() {
 
   useEffect(() => {
     async function fetchUser() {
-<<<<<<< HEAD
-      const response = await api.get("/user/profile");
-      setUser(response.data);
-      console.log(response.data);
-=======
       try {
         const response = await api.get("/user/profile");
         setUser(response.data);
@@ -23,7 +18,6 @@ export function PatientProfile() {
       } catch (error) {
         console.log(error);
       }
->>>>>>> 1757e8b8009e5bd924fbd12565b9c8903c66f6ed
     }
     fetchUser();
   }, []);
@@ -49,13 +43,7 @@ export function PatientProfile() {
     navigate("/");
   }
 
-<<<<<<< HEAD
-  console.log(loggedInUser.user);
-  console.log(loggedInUser.user.appointments);
-  console.log(loggedInUser.user);
-=======
   console.log(user);
->>>>>>> 1757e8b8009e5bd924fbd12565b9c8903c66f6ed
 
   return loading ? (
     <div className="spinner-border text-danger" role="status"></div>
