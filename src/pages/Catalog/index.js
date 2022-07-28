@@ -22,8 +22,6 @@ export function Catalog() {
     fetchCatalog();
   }, []);
 
-  console.log(form);
-
   return loading ? (
     <div className="spinner-border text-danger" role="status"></div>
   ) : (

@@ -5,38 +5,35 @@ import buildCalendar from "./buildCalendar";
 import dayStyles, { beforeToday, isSunSat } from "./styles.js";
 import CalendarHeader from "./header";
 import "moment/locale/pt-br";
-
-import setDate from "date-fns/setDate";
 import setHours from "date-fns/setHours";
 
-export default function Calendar({ value, onChange, form, setForm }) {
+export default function Calendar({ value, onChange, setDateHour }) {
   const [calendar, setCalendar] = useState([]);
-  const [hour, setHour] = useState({ hour: "" });
+  const [hour, setHour] = useState("");
   const [daySelected, setDaySelected] = useState([]);
-  // const hour = "10";
-
-  function handleHour(e) {
-    setHour(e.target.value);
-  }
-
-  console.log(form);
-  const resultDate = setDate(new Date(2014, 8, 1), 30);
-  // console.log(resultDate)
-  const resultHour = setHours(new Date(2014, 8, 1, 11, 30), form);
-  console.log(resultHour);
 
   function handleAddDay(day) {
-    setDaySelected(day.format("LL"));
-    console.log(day.hour(hour));
+    setDaySelected(day.format("L"));
+    console.log("setando a data");
   }
+
   useEffect(() => {
     setCalendar(buildCalendar(value));
   }, [value]);
 
+  function setupDate() {
+    const dateString = daySelected.split("/");
+    const selectedHour = setHours(
+      new Date(dateString[2], dateString[1] - 1, dateString[0]),
+      hour
+    );
+    console.log("juntando os dois");
+    return selectedHour;
+  }
+
   return (
     <>
-      <h1>{daySelected.toString()}</h1>
-      <div className="calendar">
+      <div className="calendar pt-4">
         <CalendarHeader value={value} setValue={onChange} />
         <div className="body">
           <div className="day-names">
@@ -48,7 +45,6 @@ export default function Calendar({ value, onChange, form, setForm }) {
           </div>
           {calendar.map((week) => (
             <div key={week}>
-              {/* {console.log(week[0])} */}
               {week.map((day, index) => (
                 <div
                   key={index}
@@ -67,11 +63,20 @@ export default function Calendar({ value, onChange, form, setForm }) {
             </div>
           ))}
         </div>
-        <div>
-          <label>Escolha um Horário</label>
-          <select id="hour-input" name="hour" onChange={handleHour}>
-            <option value="8">08:00</option>
-            <option value="9">09:00</option>
+        <div className="pt-2 flex justify-center">
+          <label className="text-sm font-bold mb-2 pt-2">Escolha um horário:</label>
+          <select
+            className="bg-gray-200 border ml-2 pl-6 border-gray-200 text-gray-700 px-4 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="hour-input"
+            name="hour"
+            onChange={(e) => {
+              setHour(e.target.value);
+              console.log("setando a hora");
+            }}
+            defaultValue="08"
+          >
+            <option value="08">08:00</option>
+            <option value="09">09:00</option>
             <option value="10">10:00</option>
             <option value="11">11:00</option>
             <option value="14">14:00</option>
@@ -79,6 +84,14 @@ export default function Calendar({ value, onChange, form, setForm }) {
             <option value="16">16:00</option>
             <option value="17">17:00</option>
           </select>
+          <button
+            className="bg-purple-700 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold ml-2 px-4 rounded-full"
+            onClick={() => {
+              setDateHour(setupDate());
+            }}
+          >
+            Confirmar
+          </button>
         </div>
       </div>
     </>

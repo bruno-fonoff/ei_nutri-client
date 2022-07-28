@@ -19,7 +19,7 @@ export function Home() {
           <Link to="/user">
             <button
               className="
-            items-center justify-center px-9 py-2 border border-transparent text-base font-medium mb-2 rounded-full bg-purple-700 hover:bg-purple-400 transition ease-in-out delay-150 text-white font-bold hover:-translate-x-1 hover:scale-110  duration-300"
+            items-center justify-center px-10 py-2 border border-transparent text-base mb-2 rounded-full bg-purple-700 hover:bg-purple-400 transition ease-in-out delay-150 text-white font-bold hover:-translate-x-1 hover:scale-110  duration-300"
             >
               Paciente
             </button>
@@ -29,7 +29,7 @@ export function Home() {
           <Link to="/admin">
             <button
               className="
-            items-center justify-center px-6 py-2 border border-transparent text-base font-medium mb-2 rounded-full  bg-purple-700 hover:bg-purple-400 transition ease-in-out delay-150 text-white font-bold hover:-translate-x-1 hover:scale-110  duration-300"
+            items-center justify-center px-6 py-2 border border-transparent text-base mb-2 rounded-full  bg-purple-700 hover:bg-purple-400 transition ease-in-out delay-150 text-white font-bold hover:-translate-x-1 hover:scale-110  duration-300"
             >
               Nutricionista
             </button>

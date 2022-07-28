@@ -4,26 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 export function NutriSignup() {
-  const { register, setValue, setFocus } = useForm();
-
-  const checkCEP = (e) => {
-    const cep = e.target.value.replace(/\D/g, "");
-
-    fetch(`https://viacep.com.br/ws/${cep}/json/`)
-      .then((res) => res.json())
-      .then((data) => {
-        const response = data;
-        console.log(response);
-
-        setValue("street", data.logradouro);
-        setValue("neighborhood", data.bairro);
-        setValue("city", data.localidade);
-        setValue("uf", data.uf);
-        setFocus("number");
-        console.log(data.logradouro);
-      });
-  };
-
+  const { register, setValue } = useForm();
   const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
@@ -44,6 +25,25 @@ export function NutriSignup() {
     zipcode: "",
     uf: "",
   });
+
+  const checkCEP = (e) => {
+    const cep = e.target.value.replace(/\D/g, "");
+
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then((res) => res.json())
+      .then((data) => {
+        const response = data;
+
+        setValue("street", response.logradouro);
+        setValue("neighborhood", response.bairro);
+        setValue("city", response.localidade);
+        setValue("uf", response.uf);
+        setAddress(...address, response)
+      });
+  };
+
+  console.log(address);
+  console.log(form);
 
   function handleAddress(e) {
     setAddress({ ...address, [e.target.name]: e.target.value });

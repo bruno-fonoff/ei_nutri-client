@@ -48,7 +48,7 @@ export function PatientLogin() {
           />
         </Link>
         <form
-          className="shadow-md rounded px-8 pb-8 mb-4"
+          className="rounded px-8 pb-8 mb-4"
           onSubmit={handleSubmit}
         >
           <div className="mb-4">
