@@ -47,14 +47,11 @@ export function PatientLogin() {
             className="h-8 rounded-full ml-8"
           />
         </Link>
-        <form
-          className="rounded px-8 pb-8 mb-4"
-          onSubmit={handleSubmit}
-        >
+        <form className="rounded px-8 pb-8 mb-4" onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-sm font-bold mb-2">Email:</label>
             <input
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
               type="email"
               name="email"
               value={form.email}
@@ -64,7 +61,7 @@ export function PatientLogin() {
           <div className="mb-4">
             <label className="block text-sm font-bold mb-2">Senha:</label>
             <input
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
               type="password"
               name="password"
               value={form.password}

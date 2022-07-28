@@ -16,6 +16,7 @@ import { EditPatientProfile } from "./pages/EditProfile/user";
 import { Catalog } from "./pages/Catalog";
 import { Footer } from "./components/Footer";
 import { GoToNutriProfile } from "./pages/UserGoToNutriProfile";
+import { EditNutriProfile } from "./pages/EditProfile/admin";
 
 export function App() {
   return (
@@ -23,19 +24,16 @@ export function App() {
       <AuthContextComponent>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/user/catalog" element={<Catalog />} />
 
           <Route path="/user" element={<PatientUser />} />
           <Route path="/user/login" element={<PatientLogin />} />
           <Route path="/user/signup" element={<PatientSignup />} />
-          <Route
-            path="/user/update-profile"
-            element={<ProtectedRoute component={EditPatientProfile} />}
-          />
+          <Route path="/user/update-profile" element={<EditPatientProfile />} />
           <Route
             path="/user/profile"
             element={<ProtectedRoute component={PatientProfile} />}
           />
+          <Route path="/user/catalog" element={<Catalog />} />
           <Route
             path="/user/nutri-profile/:adminId"
             element={<ProtectedRoute component={GoToNutriProfile} />}
@@ -44,13 +42,13 @@ export function App() {
           <Route path="/admin" element={<NutriUser />} />
           <Route path="/admin/login" element={<NutriLogin />} />
           <Route path="/admin/signup" element={<NutriSignup />} />
+          <Route path="/admin/update-profile" element={<EditNutriProfile />} />
           <Route
             path="/admin/profile"
             element={<ProtectedRoute component={NutriProfile} />}
           />
 
           <Route path="*" element={<ErrorPage />} />
-
         </Routes>
         <Footer />
       </AuthContextComponent>

@@ -91,7 +91,7 @@ export function EditPatientProfile() {
               Nome:
             </label>
             <input
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
               id="formName"
               name="name"
               type="text"
@@ -104,7 +104,7 @@ export function EditPatientProfile() {
               E-mail:
             </label>
             <input
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
               id="formEmail"
               name="email"
               type="email"
@@ -130,7 +130,7 @@ export function EditPatientProfile() {
             </label>
             <div className="relative">
               <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500 focus:ring-4 ring-purple-700 ring-inset"
                 id="formObj"
                 type="text"
                 name="whyAreYouHere"
@@ -165,7 +165,7 @@ export function EditPatientProfile() {
                 Idade:
               </label>
               <input
-                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
                 id="formAge"
                 name="age"
                 type="age"
@@ -181,7 +181,7 @@ export function EditPatientProfile() {
                 Peso:
               </label>
               <input
-                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
                 id="formWeight"
                 name="weight"
                 type="weight"
@@ -197,7 +197,7 @@ export function EditPatientProfile() {
                 Altura:
               </label>
               <input
-                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
                 id="formHeight"
                 name="height"
                 type="height"

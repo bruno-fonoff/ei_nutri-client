@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { api } from "../../api/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import logo from "../../assets/images/ei_nutri_logo.jpg";
+import returnBtn from "../../assets/images/voltar.png";
 
 export function NutriSignup() {
-  const { register, setValue } = useForm();
+  const { register, setValue, getValues, setFocus } = useForm();
   const navigate = useNavigate();
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -18,13 +21,17 @@ export function NutriSignup() {
 
   const [img, setImg] = useState("");
   const [address, setAddress] = useState({
+    zipcode: "",
     street: "",
-    addressNumber: "",
+    number: "",
     neighborhood: "",
     city: "",
-    zipcode: "",
     uf: "",
   });
+
+  // const onSubmit = (e) => {
+  //   console.log(e);
+  // };
 
   const checkCEP = (e) => {
     const cep = e.target.value.replace(/\D/g, "");
@@ -32,21 +39,29 @@ export function NutriSignup() {
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
       .then((res) => res.json())
       .then((data) => {
-        const response = data;
-
-        setValue("street", response.logradouro);
-        setValue("neighborhood", response.bairro);
-        setValue("city", response.localidade);
-        setValue("uf", response.uf);
-        setAddress(...address, response)
+        console.log(data);
+        setValue("street", data.logradouro);
+        // setAddress(address.street, data.logradouro);
+        setValue("neighborhood", data.bairro);
+        setValue("city", data.localidade);
+        setValue("uf", data.uf);
+        setFocus("number");
+        const values = getValues();
+        console.log(values);
+        setAddress({
+          ...address,
+          street: values.street,
+          neighborhood: values.neighborhood,
+          city: values.city,
+          uf: values.uf,
+          zipcode: cep,
+        });
       });
   };
-
   console.log(address);
-  console.log(form);
-
   function handleAddress(e) {
     setAddress({ ...address, [e.target.name]: e.target.value });
+    console.log(address);
   }
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -88,21 +103,31 @@ export function NutriSignup() {
   }
 
   return (
-    <div className="w-full max-w-xs">
-      <form
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-        onSubmit={handleSubmit}
-      >
-        {/* --------------------------------------------------------------------------------- */}
+    <div className="bg-amber-600 text-white h-full w-full">
+      <div className="flex justify-between pt-6">
+        <div className="">
+          <Link to="/admin">
+            <img
+              src={returnBtn}
+              alt="retornar pagina"
+              className="h-8 rounded-full ml-8 "
+            />
+          </Link>
+        </div>
+        <img
+          src={logo}
+          alt="ei nutri logo"
+          className="h-16 mr-40 rounded-full mb-6"
+        />
+      </div>
+
+      <form className="rounded px-8 pb-8" onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="formName"
-          >
+          <label className="block text-sm font-bold mb-2" htmlFor="formName">
             Nome Completo:
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none   border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="formName"
             name="name"
             placeholder="Ex :  Maria Joaquina da Silva"
@@ -114,15 +139,26 @@ export function NutriSignup() {
         </div>
 
         {/* --------------------------------------------------------------------------------- */}
+
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="formEmail"
-          >
+          <label className="block text-sm font-bold mb-2" htmlFor="formImg">
+            Sua Foto de Perfil:
+          </label>
+          <input
+            className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="file"
+            id="formImg"
+            onChange={handleImage}
+          />
+        </div>
+        {/* --------------------------------------------------------------------------------- */}
+
+        <div className="mb-4">
+          <label className="block text-sm font-bold mb-2" htmlFor="formEmail">
             E-mail:
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="formEmail"
             name="email"
             placeholder="Ex :  anonimo@gmail.com"
@@ -133,55 +169,49 @@ export function NutriSignup() {
           />
         </div>
         {/* --------------------------------------------------------------------------------- */}
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="formPhone"
-          >
-            Telefone de Contato:
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="formPhone"
-            name="phone"
-            placeholder="Ex :  13 99999-9999"
-            required={true}
-            type="text"
-            value={form.phone}
-            onChange={handleChange}
-          />
+        <div className="flex mb-4 justify-between">
+          <div className="w-3/8 mr-4  ">
+            <label className="block text-sm font-bold mb-2" htmlFor="formPhone">
+              Telefone:
+            </label>
+            <input
+              className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="formPhone"
+              name="phone"
+              placeholder="Ex :  13 99999-9999"
+              required={true}
+              type="text"
+              value={form.phone}
+              onChange={handleChange}
+            />
+          </div>
+          {/* --------------------------------------------------------------------------------- */}
+
+          <div className="w-3/8">
+            <label className="block text-sm font-bold mb-2" htmlFor="formCrn">
+              CRN:
+            </label>
+            <input
+              className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="formcrn"
+              name="crn"
+              placeholder="Ex :   9999"
+              required={true}
+              type="text"
+              value={form.crn}
+              onChange={handleChange}
+            />
+          </div>
         </div>
+
         {/* --------------------------------------------------------------------------------- */}
 
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="formCrn"
-          >
-            CRN:
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="formcrn"
-            name="crn"
-            placeholder="Ex :   9999"
-            required={true}
-            type="text"
-            value={form.crn}
-            onChange={handleChange}
-          />
-        </div>
-        {/* --------------------------------------------------------------------------------- */}
-
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="formAddress"
-          >
+          <label className="block text-md font-bold mb-2" htmlFor="formAddress">
             Endereço do Consultório:
           </label>
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-sm font-bold mb-2"
             htmlFor="address.zipcode"
           >
             CEP:
@@ -189,7 +219,7 @@ export function NutriSignup() {
           <input
             {...register("cep")}
             onBlur={checkCEP}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:ring-4 ring-purple-700 ring-inset w-1/2 mb-4 shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="address.zipcode"
             name="zipcode"
             placeholder="Ex :  99999-999"
@@ -202,14 +232,14 @@ export function NutriSignup() {
           {/* --------------------------------------------------------------------------------- */}
 
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-sm font-bold mb-2"
             htmlFor="address.street"
           >
             Rua:
           </label>
           <input
             {...register("street")}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:ring-4 ring-purple-700 ring-inset mb-4 shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="address.street"
             name="street"
             placeholder="Ex :  99999-999"
@@ -220,32 +250,14 @@ export function NutriSignup() {
           />
 
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="number"
-          >
-            Número:
-          </label>
-          <input
-            {...register("number")}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="number"
-            name="number"
-            placeholder="Ex :  9999"
-            required={true}
-            type="text"
-            value={address.number}
-            onChange={handleAddress}
-          />
-
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-sm font-bold mb-2"
             htmlFor="address.street"
           >
             Bairro:
           </label>
           <input
             {...register("neighborhood")}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:ring-4 ring-purple-700 ring-inset mb-4 shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="address.neighborhood"
             name="neighborhood"
             placeholder="Ex :  Bairro dos Jardins"
@@ -256,14 +268,14 @@ export function NutriSignup() {
           />
 
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-sm font-bold mb-2"
             htmlFor="address.city"
           >
             Cidade:
           </label>
           <input
             {...register("city")}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:ring-4 ring-purple-700 ring-inset mb-4 shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="address.city"
             name="city"
             placeholder="Ex :  Santos"
@@ -272,51 +284,55 @@ export function NutriSignup() {
             value={address.city}
             onChange={handleAddress}
           />
-
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="address.uf"
-          >
-            UF:
-          </label>
-          <input
-            {...register("uf")}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="address.uf"
-            name="uf"
-            placeholder="Ex :  BA"
-            required={true}
-            type="text"
-            value={address.uf}
-            onChange={handleAddress}
-          />
+          <div className="flex mb-4 justify-between">
+            <div className="w-3/8 mr-4">
+              <label className="block text-sm font-bold mb-2" htmlFor="number">
+                Número:
+              </label>
+              <input
+                {...register("number")}
+                className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="number"
+                name="number"
+                placeholder="Ex :  9999"
+                required={true}
+                type="text"
+                value={address.number}
+                onChange={handleAddress}
+              />
+            </div>
+            <div className="w-3/8 mr-4">
+              <label
+                className="block text-sm font-bold mb-2"
+                htmlFor="address.uf"
+              >
+                UF:
+              </label>
+              <input
+                {...register("uf")}
+                className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="address.uf"
+                name="uf"
+                placeholder="Ex :  BA"
+                required={true}
+                type="text"
+                value={address.uf}
+                onChange={handleAddress}
+              />
+            </div>
+          </div>
         </div>
         {/* --------------------------------------------------------------------------------- */}
 
         <div className="mb-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="formImg"
-          >
-            Sua Foto de Perfil:
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="file"
-            id="formImg"
-            onChange={handleImage}
-          />
-        </div>
-        {/* --------------------------------------------------------------------------------- */}
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-sm font-bold mb-2"
             htmlFor="formPassword"
           >
             Senha:
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="formPassword"
             name="password"
             type="password"
@@ -327,13 +343,13 @@ export function NutriSignup() {
         {/* --------------------------------------------------------------------------------- */}
         <div className="mb-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-sm font-bold mb-2"
             htmlFor="formConfirmPassword"
           >
             Confirmação de Senha:
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="formConfirmPassword"
             type="password"
             name="confirmPassword"
@@ -344,10 +360,10 @@ export function NutriSignup() {
         {/* --------------------------------------------------------------------------------- */}
         <div>
           <button
-            className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+            className="focus:ring-4 ring-purple-700 ring-inset shadow bg-purple-700 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full w-full"
             type="submit"
           >
-            Cadastrar
+            Criar cadastro
           </button>
         </div>
       </form>

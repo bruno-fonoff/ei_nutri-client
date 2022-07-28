@@ -69,16 +69,13 @@ export function PatientSignup() {
           />
         </Link>
 
-        <form
-          className="rounded px-8 pb-8 mb-4"
-          onSubmit={handleSubmit}
-        >
+        <form className="rounded px-8 pb-8 mb-4" onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-sm font-bold mb-2" htmlFor="formName">
               Nome:
             </label>
             <input
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
               id="formName"
               name="name"
               type="text"
@@ -104,7 +101,7 @@ export function PatientSignup() {
             </label>
             <div className="relative">
               <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500 focus:ring-4 ring-purple-700 ring-inset"
                 id="formObj"
                 type="text"
                 name="whyAreYouHere"
@@ -140,7 +137,7 @@ export function PatientSignup() {
                 Idade:
               </label>
               <input
-                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
                 id="formAge"
                 name="age"
                 type="age"
@@ -156,7 +153,7 @@ export function PatientSignup() {
                 Peso:
               </label>
               <input
-                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
                 id="formWeight"
                 name="weight"
                 type="weight"
@@ -172,7 +169,7 @@ export function PatientSignup() {
                 Altura:
               </label>
               <input
-                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
                 id="formHeight"
                 name="height"
                 type="height"
@@ -186,7 +183,7 @@ export function PatientSignup() {
               E-mail:
             </label>
             <input
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
               id="formEmail"
               name="email"
               type="email"
@@ -202,7 +199,7 @@ export function PatientSignup() {
               Senha:
             </label>
             <input
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
               id="formPassword"
               name="password"
               type="password"
@@ -218,7 +215,7 @@ export function PatientSignup() {
               Confirmação de senha:
             </label>
             <input
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
               id="formConfirmPassword"
               type="password"
               name="confirmPassword"
