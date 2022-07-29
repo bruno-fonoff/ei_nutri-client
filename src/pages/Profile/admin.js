@@ -106,12 +106,12 @@ export function NutriProfile() {
       <div className=" rounded px-8 pt-6 pb-8 mb-4">
         <div className="flex mb-4">
           <img
-            src={admin.user.img}
+            src={admin.admin.img}
             alt="user profile"
             className="sm:h-20 md:h-36 lg:h-36 rounded-full"
           />
           <h1 className="block sm:text-lg md:text-xl lg:text-2xl  mb-2 pl-4 sm:pt-6 md:pt-14 lg:pt-14 mr-10">
-            Bem vindo, <b>{admin.user.name}</b> !
+            Bem vindo, <b>{admin.admin.name}</b> !
           </h1>
         </div>
         <div>
