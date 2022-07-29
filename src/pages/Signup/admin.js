@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
 import returnBtn from "../../assets/images/voltar.png";
+import home from "../../assets/images/home.png";
 
 export function NutriSignup() {
   const { register, setValue, getValues, setFocus } = useForm();
@@ -79,6 +80,15 @@ export function NutriSignup() {
       console.log(error);
     }
   }
+  const inputRef = useRef(null);
+
+  const toggleShow = () => {
+    if (inputRef.current.type === "password") {
+      inputRef.current.type = "text";
+    } else {
+      inputRef.current.type = "password";
+    }
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -100,22 +110,31 @@ export function NutriSignup() {
 
   return (
     <div className=" h-full w-full">
-      <div className="flex justify-center pt-12">
+      <div className="pt-3 bg-amber-600 pb-3 flex justify-between items-center">
+        <Link to="/admin">
+          <img
+            src={returnBtn}
+            alt="retornar pagina"
+            className="h-10 rounded-full ml-8"
+          />
+        </Link>
+        <Link to="/" className="flex justify-center">
+          <img
+            src={home}
+            alt="home button"
+            className="h-10 0 rounded-full mr-8"
+          />
+        </Link>
+      </div>
+
+      <div className="flex justify-center pt-8 pb-4">
         <img
           src={logo}
           alt="ei nutri logo"
           className="sm:h-24 md:h-40 lg:h-56 rounded-full"
         />
       </div>
-      <div className="">
-        <Link to="/admin">
-          <img
-            src={returnBtn}
-            alt="retornar pagina"
-            className="h-12 rounded-full ml-8 mb-4"
-          />
-        </Link>
-      </div>
+
       <form className="rounded px-8 pb-8" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2" htmlFor="formName">
@@ -336,14 +355,22 @@ export function NutriSignup() {
             Senha:
           </label>
           <input
-            className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="mb-4 focus:ring-4 ring-purple-700 ring-inset shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="formPassword"
             name="password"
             type="password"
             value={form.password}
             onChange={handleChange}
+            ref={inputRef}
+          />
+          <label className="mr-2">Mostrar Senha</label>
+          <input
+            className="accent-purple-700"
+            type="checkbox"
+            onClick={toggleShow}
           />
         </div>
+
         {/* --------------------------------------------------------------------------------- */}
         <div className="mb-4">
           <label

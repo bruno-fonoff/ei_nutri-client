@@ -5,8 +5,11 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
 import returnBtn from "../../assets/images/voltar.png";
 import toast, { Toaster } from "react-hot-toast";
+import home from "../../assets/images/home.png";
+import { ReviewCard } from "../../components/ReviewCard";
 
 export function CreateReview() {
+  const [infoReview, setInfoReview] = useState({});
   const { adminId } = useParams();
   const navigate = useNavigate();
   const { loggedInUser } = useContext(AuthContext);
@@ -16,20 +19,20 @@ export function CreateReview() {
     description: "",
     rating: "",
   });
-  const [infoReview, setInfoReview] = useState([]);
 
   useEffect(() => {
     async function fetchCatalog() {
       try {
         const response = await api.get(`/user/nutri-profile/${adminId}`);
-        setInfoReview(response.data.nutri[0]);
+        setInfoReview(response.data.nutri[0].reviews);
+        console.log(infoReview);
         setLoading(false);
       } catch (error) {
         console.log(error);
       }
     }
     fetchCatalog();
-  }, []);
+  }, [adminId]);
 
   function handleChange(e) {
     setReview({ ...review, [e.target.name]: e.target.value });
@@ -49,26 +52,39 @@ export function CreateReview() {
     }
   }
 
-  return (
+  console.log(loggedInUser);
+
+  return loading ? (
+    <div className="spinner-border text-danger" role="status"></div>
+  ) : (
     <>
       <div>
         <div>
           <Toaster />
         </div>
-        <div className="flex justify-center pt-12">
+        <div className="pt-3 bg-amber-600 pb-3 flex justify-between items-center">
+          <Link to="/user/catalog">
+            <img
+              src={returnBtn}
+              alt="retornar pagina"
+              className="h-10 rounded-full ml-8"
+            />
+          </Link>
+          <Link to="/" className="flex justify-center">
+            <img
+              src={home}
+              alt="home button"
+              className="h-10 0 rounded-full mr-8"
+            />
+          </Link>
+        </div>
+        <div className="flex justify-center pt-8 pb-4">
           <img
             src={logo}
             alt="ei nutri logo"
             className="sm:h-24 md:h-40 lg:h-56 rounded-full"
           />
         </div>
-        <Link to="/user/catalog">
-          <img
-            src={returnBtn}
-            alt="retornar pagina"
-            className="h-12 rounded-full ml-8 mb-4"
-          />
-        </Link>
         <form className="rounded px-8 pb-8" onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
@@ -127,6 +143,16 @@ export function CreateReview() {
             </div>
           </div>
         </form>
+        <div className="block text-lg font-bold mt-6 mb-2 pl-4">
+          <h2>Avaliações:</h2>
+          {/* {infoReview.nutri.reviews.map((currentReview) => {
+            return (
+              <div>
+                <ReviewCard props={currentReview} />
+              </div>
+            );
+          })} */}
+        </div>
       </div>
     </>
   );

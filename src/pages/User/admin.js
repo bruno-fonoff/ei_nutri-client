@@ -6,7 +6,7 @@ export function NutriUser() {
   return (
     <div className=" h-screen">
       <div className="pt-3 bg-amber-600 pb-3 flex justify-between items-center">
-        <Link to="/admin">
+        <Link to="/">
           <img
             src={returnBtn}
             alt="retornar pagina"

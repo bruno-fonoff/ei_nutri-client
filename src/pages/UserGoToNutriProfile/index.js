@@ -8,6 +8,7 @@ import moment from "moment";
 import returnBtn from "../../assets/images/voltar.png";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import home from "../../assets/images/home.png";
 
 export function GoToNutriProfile() {
   const navigate = useNavigate();
@@ -97,23 +98,32 @@ export function GoToNutriProfile() {
     <div className="spinner-border text-danger" role="status"></div>
   ) : (
     <div className=" h-screen w-full">
+      <div className="pt-3 bg-amber-600 pb-3 flex justify-between items-center">
+        <Link to="/user/catalog">
+          <img
+            src={returnBtn}
+            alt="retornar pagina"
+            className="h-10 rounded-full ml-8"
+          />
+        </Link>
+        <Link to="/" className="flex justify-center">
+          <img
+            src={home}
+            alt="home button"
+            className="h-10 0 rounded-full mr-8"
+          />
+        </Link>
+      </div>
       <div>
         <Toaster />
       </div>
-      <div className="flex justify-center pt-12">
+      <div className="flex justify-center pt-8 pb-4">
         <img
           src={logo}
           alt="ei nutri logo"
           className="sm:h-24 md:h-40 lg:h-56 rounded-full"
         />
       </div>
-      <Link to="/user/catalog">
-        <img
-          src={returnBtn}
-          alt="retornar pagina"
-          className="h-12 rounded-full ml-8 mb-4"
-        />
-      </Link>
       <div className="flex justify-center px-5 pb-4 mt-4">
         <img
           src={nutri.img}
