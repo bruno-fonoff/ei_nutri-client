@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { api } from "../../api/api";
 import { useNavigate, Link } from "react-router-dom";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
-import toast, { Toaster } from "react-hot-toast";
 import { ReviewCard } from "../../components/ReviewCard";
 import returnBtn from "../../assets/images/voltar.png";
 import home from "../../assets/images/home.png";
@@ -45,7 +44,6 @@ export function PatientProfile() {
   async function handleDelete() {
     try {
       await api.delete("/user/disable-profile");
-      toast.success("Conta deletada com sucesso!");
     } catch (error) {
       console.log(error);
     }
@@ -71,9 +69,6 @@ export function PatientProfile() {
             className="h-10 0 rounded-full mr-8"
           />
         </Link>
-      </div>
-      <div>
-        <Toaster />
       </div>
       <div className="flex justify-between items-center">
         <div className="">
@@ -119,10 +114,9 @@ export function PatientProfile() {
             className="sm:h-20 md:h-36 lg:h-36 rounded-full"
           />
           <h1 className="block sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 pl-4 sm:pt-6 md:pt-14 lg:pt-14 mr-10">
-            Bem vindo, {user.user.name} !
+            Bem vindo, <b>{user.user.name}</b> !
           </h1>
         </div>
-
         <div className="flex justify-center">
           <button
             className="shadow bg-purple-700 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full w-50"
@@ -134,10 +128,10 @@ export function PatientProfile() {
         <div>
           <div className="block text-lg font-bold mt-6 mb-2 pl-4">
             <h2>Suas consultas:</h2>
-            <p>{user.user.appointments[0].slice(0, 21)} hrs.</p>
+            <p>{user.user.appointments[0]}</p>
           </div>
           <div className="block text-lg font-bold mt-6 mb-2 pl-4">
-            <h2>Seus reviews:</h2>
+            <h2>Suas avaliações:</h2>
             {user.user.reviews.map((currentReview) => {
               return (
                 <div onClick={handlerefresh} key={currentReview._id}>

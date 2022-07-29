@@ -36,7 +36,6 @@ export function EditNutriProfile() {
       try {
         const response = await api.get("/admin/profile");
         setForm(response.data.admin);
-        console.log(response.data.admin);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -53,7 +52,6 @@ export function EditNutriProfile() {
       .then((data) => {
         console.log(data);
         setValue("street", data.logradouro);
-        // setAddress(address.street, data.logradouro);
         setValue("neighborhood", data.bairro);
         setValue("city", data.localidade);
         setValue("uf", data.uf);
@@ -102,12 +100,11 @@ export function EditNutriProfile() {
       const clone = { ...form };
       delete clone._id;
       const imgURL = await handleUpload();
-      const response = await api.patch("/admin/update-profile", {
+      await api.patch("/admin/update-profile", {
         ...form,
         address: address,
         img: imgURL,
       });
-      console.log(response);
       navigate("/admin/profile");
     } catch (error) {
       console.log(error);
