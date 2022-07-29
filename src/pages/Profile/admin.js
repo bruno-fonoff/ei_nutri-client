@@ -1,7 +1,6 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../api/api";
 import { useNavigate, Link } from "react-router-dom";
-import { AuthContext } from "../../contexts/authContext";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import returnBtn from "../../assets/images/voltar.png";
@@ -11,14 +10,17 @@ import { ReviewsNutri } from "../../components/ReviewsNutri/index";
 export function NutriProfile() {
   const [admin, setAdmin] = useState({ name: "", email: "" });
   const navigate = useNavigate();
-  const { loggedInUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchUser() {
-      const response = await api.get("/admin/profile");
-      setAdmin(response.data);
-      setLoading(false);
+      try {
+        const response = await api.get("/admin/profile");
+        setAdmin(response.data);
+        setLoading(false);  
+      } catch (error) {
+        console.log(error);
+      }
     }
     fetchUser();
   }, []);
@@ -40,7 +42,6 @@ export function NutriProfile() {
     navigate("/");
   }
 
-  // console.log(admin.admin.patients);
 
   return loading ? (
     <div className="spinner-border text-danger" role="status"></div>
@@ -105,12 +106,12 @@ export function NutriProfile() {
       <div className=" rounded px-8 pt-6 pb-8 mb-4">
         <div className="flex mb-4">
           <img
-            src={loggedInUser.user.img}
+            src={admin.user.img}
             alt="user profile"
             className="sm:h-20 md:h-36 lg:h-36 rounded-full"
           />
           <h1 className="block sm:text-lg md:text-xl lg:text-2xl  mb-2 pl-4 sm:pt-6 md:pt-14 lg:pt-14 mr-10">
-            Bem vindo, <b>{loggedInUser.user.name}</b> !
+            Bem vindo, <b>{admin.user.name}</b> !
           </h1>
         </div>
         <div>
