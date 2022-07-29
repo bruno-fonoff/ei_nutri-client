@@ -34,9 +34,13 @@ export function PatientLogin() {
   }
 
   return (
-    <div className="bg-amber-600 text-white h-screen w-full">
+    <div className=" h-screen w-full">
       <div className="flex justify-center pt-12 pb-12">
-        <img src={logo} alt="ei nutri logo" className="sm:h-24 md:h-40 lg:h-56 rounded-full" />
+        <img
+          src={logo}
+          alt="ei nutri logo"
+          className="sm:h-24 md:h-40 lg:h-56 rounded-full"
+        />
       </div>
       <div>
         <div>
@@ -64,7 +68,7 @@ export function PatientLogin() {
           <div className="mb-4">
             <label className="block text-sm font-bold mb-2">Senha:</label>
             <input
-              className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
+              className="mb-6 shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
               type="password"
               name="password"
               value={form.password}

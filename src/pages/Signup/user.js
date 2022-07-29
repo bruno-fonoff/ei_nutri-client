@@ -3,7 +3,7 @@ import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
 import returnBtn from "../../assets/images/voltar.png";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
 export function PatientSignup() {
   const navigate = useNavigate();
@@ -55,14 +55,18 @@ export function PatientSignup() {
   }
 
   return (
-    <div className="bg-amber-600 text-white h-screen w-full">
+    <div className="e h-screen w-full">
       <div className="flex justify-center pt-12">
-        <img src={logo} alt="ei nutri logo" className="sm:h-24 md:h-40 lg:h-56 rounded-full" />
+        <img
+          src={logo}
+          alt="ei nutri logo"
+          className="sm:h-24 md:h-40 lg:h-56 rounded-full"
+        />
       </div>
       <div>
-      <div>
-        <Toaster />
-      </div>
+        <div>
+          <Toaster />
+        </div>
         <Link to="/user">
           <img
             src={returnBtn}

@@ -25,9 +25,13 @@ export function Catalog() {
   return loading ? (
     <div className="spinner-border text-danger" role="status"></div>
   ) : (
-    <div className="bg-amber-600 text-white w-full">
+    <div className="w-full">
       <div className="flex justify-center pt-12">
-        <img src={logo} alt="ei nutri logo" className="sm:h-24 md:h-40 lg:h-56 rounded-full" />
+        <img
+          src={logo}
+          alt="ei nutri logo"
+          className="sm:h-24 md:h-40 lg:h-56 rounded-full"
+        />
       </div>
       <div>
         <Link to="/user/profile">

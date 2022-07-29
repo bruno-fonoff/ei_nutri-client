@@ -1,5 +1,5 @@
 import { AuthContext } from "../../contexts/authContext";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { api } from "../../api/api";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
@@ -10,11 +10,28 @@ export function CreateReview() {
   const { adminId } = useParams();
   const navigate = useNavigate();
   const { loggedInUser } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
   const [review, setReview] = useState({
     title: "",
     description: "",
     rating: "",
   });
+  const [infoReview, setInfoReview] = useState([]);
+
+  useEffect(() => {
+    async function fetchCatalog() {
+      try {
+        const response = await api.get(`/user/nutri-profile/${adminId}`);
+        setInfoReview(response.data.nutri[0]);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchCatalog();
+  }, []);
+
+  console.log(infoReview);
 
   function handleChange(e) {
     setReview({ ...review, [e.target.name]: e.target.value });
@@ -112,6 +129,32 @@ export function CreateReview() {
             </div>
           </div>
         </form>
+        <div className="max-w-sm rounded overflow-hidden shadow-lg">
+          <img
+            className="w-full"
+            src="/img/card-top.jpg"
+            alt="Sunset in the mountains"
+          />
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p className="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatibus quia, nulla! Maiores et perferendis eaque,
+              exercitationem praesentium nihil.
+            </p>
+          </div>
+          <div className="px-6 pt-4 pb-2">
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+              #photography
+            </span>
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+              #travel
+            </span>
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+              #winter
+            </span>
+          </div>
+        </div>
       </div>
     </>
   );

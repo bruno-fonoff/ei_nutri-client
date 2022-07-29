@@ -84,13 +84,10 @@ export function GoToNutriProfile() {
         appointments: [consulta],
       });
 
-      await api.patch(
-        `/user/appointment-created/${adminId}`,
-        {
-          ...nutri,
-          appointments: [consulta],
-        }
-      );
+      await api.patch(`/user/appointment-created/${adminId}`, {
+        ...nutri,
+        appointments: [consulta],
+      });
     } catch (error) {
       console.log(error);
     }
@@ -99,12 +96,16 @@ export function GoToNutriProfile() {
   return loading ? (
     <div className="spinner-border text-danger" role="status"></div>
   ) : (
-    <div className="bg-amber-600 text-white h-screen w-full">
+    <div className=" h-screen w-full">
       <div>
         <Toaster />
       </div>
       <div className="flex justify-center pt-12">
-        <img src={logo} alt="ei nutri logo" className="sm:h-24 md:h-40 lg:h-56 rounded-full" />
+        <img
+          src={logo}
+          alt="ei nutri logo"
+          className="sm:h-24 md:h-40 lg:h-56 rounded-full"
+        />
       </div>
       <Link to="/user/catalog">
         <img
