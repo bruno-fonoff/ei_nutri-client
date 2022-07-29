@@ -37,9 +37,8 @@ export function CatalogCard({ currentNutri }) {
         </div>
         <div className="pt-4 pb-2">
           <div className="flex justify-around">
-            <div className="text-3xl  text-purple-700">★★★★★</div>
             <button
-              className="h-10 mb-4 shadow bg-white  focus:shadow-outline focus:outline-none text-purple-700 font-bold py-2 px-4 rounded-full w-2/5"
+              className="h-10 mb-4 shadow bg-white  focus:shadow-outline focus:outline-none text-purple-700 font-bold py-2 px-4 rounded-full w-3/4 border-solid border-2 border-purple-700"
               onClick={GoToNutriReview}
             >
               Avaliações

@@ -14,7 +14,6 @@ import { PatientProfile } from "./pages/Profile/user";
 import { NutriProfile } from "./pages/Profile/admin";
 import { EditPatientProfile } from "./pages/EditProfile/user";
 import { Catalog } from "./pages/Catalog";
-// import { Footer } from "./components/Footer";
 import { GoToNutriProfile } from "./pages/UserGoToNutriProfile";
 import { EditNutriProfile } from "./pages/EditProfile/admin";
 import { CreateReview } from "./pages/CreateReview";
@@ -55,7 +54,6 @@ export function App() {
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-        {/* <Footer /> */}
       </AuthContextComponent>
     </>
   );
