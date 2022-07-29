@@ -42,8 +42,8 @@ export function NutriProfile() {
   console.log(user);
 
   return (
-    <div className="bg-amber-600 text-white h-screen w-full">
-      <div className="flex justify-center pt-12 pb-12">
+    <div className=" h-screen w-full">
+      <div className="flex justify-center pt-8 pb-2">
         <div>
           <Toaster />
         </div>

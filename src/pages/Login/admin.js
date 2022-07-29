@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/authContext";
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
-import returnBtn from "../../assets/images/voltar.png";
+
 import toast, { Toaster } from "react-hot-toast";
 
 export function NutriLogin() {
@@ -35,17 +35,15 @@ export function NutriLogin() {
   }
 
   return (
-    <div className="bg-amber-600 text-white h-screen w-full">
+    <div className=" h-screen w-full">
       <div className="flex justify-center pt-12 pb-12">
-        <img src={logo} alt="ei nutri logo" className="sm:h-24 md:h-40 lg:h-56 rounded-full" />
-      </div>
-      <Link to="/admin">
         <img
-          src={returnBtn}
-          alt="retornar pagina"
-          className="h-12 rounded-full ml-8 mb-4"
+          src={logo}
+          alt="ei nutri logo"
+          className="sm:h-24 md:h-40 lg:h-56 rounded-full"
         />
-      </Link>
+      </div>
+
       <div>
         <Toaster />
       </div>
@@ -63,7 +61,7 @@ export function NutriLogin() {
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2">Senha:</label>
           <input
-            className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
+            className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 mb-4 leading-tight focus:outline-none focus:shadow-outline focus:ring-4 ring-purple-700 ring-inset"
             type="password"
             name="password"
             value={form.password}

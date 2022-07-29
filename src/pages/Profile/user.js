@@ -46,7 +46,7 @@ export function PatientProfile() {
   return loading ? (
     <div className="spinner-border text-danger" role="status"></div>
   ) : (
-    <div className="bg-amber-600 text-white h-screen w-full">
+    <div className=" h-screen w-full">
       <div className="flex justify-center pt-12 pb-12">
         <div>
           <Toaster />

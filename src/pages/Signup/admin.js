@@ -99,7 +99,7 @@ export function NutriSignup() {
   }
 
   return (
-    <div className="bg-amber-600 text-white h-full w-full">
+    <div className=" h-full w-full">
       <div className="flex justify-center pt-12">
         <img
           src={logo}
