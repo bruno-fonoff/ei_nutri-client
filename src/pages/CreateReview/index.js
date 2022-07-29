@@ -51,10 +51,7 @@ export function CreateReview() {
     }
   }
 
-  console.log(review);
-  return loading ? (
-    <div className="spinner-border text-danger" role="status"></div>
-  ) : (
+  return (
     <>
       <div>
         <div>
@@ -74,7 +71,6 @@ export function CreateReview() {
             className="h-12 rounded-full ml-8 mb-4"
           />
         </Link>
-
         <form className="rounded px-8 pb-8" onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
