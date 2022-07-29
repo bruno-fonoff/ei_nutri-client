@@ -128,7 +128,7 @@ export function PatientProfile() {
         <div>
           <div className="block text-lg font-bold mt-6 mb-2 pl-4">
             <h2>Suas consultas:</h2>
-            <p>{user.user.appointments[0].slice(0, 21)} hrs.</p>
+            <p>{user.user.appointments[0]}</p>
           </div>
           <div className="block text-lg font-bold mt-6 mb-2 pl-4">
             <h2>Suas avaliações:</h2>

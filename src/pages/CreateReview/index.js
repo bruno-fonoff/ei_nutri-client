@@ -29,7 +29,7 @@ export function CreateReview() {
     }
     fetchCatalog();
   }, [adminId]);
-
+  // console.log(infoReview);
   function handleChange(e) {
     setReview({ ...review, [e.target.name]: e.target.value });
   }
@@ -48,8 +48,10 @@ export function CreateReview() {
     }
   }
 
+  // console.log(loggedInUser);
+
   return (
-    <div>
+    <>
       <div>
         <Toaster />
       </div>
@@ -135,6 +137,6 @@ export function CreateReview() {
           );
         })}
       </div>
-    </div>
+    </>
   );
 }

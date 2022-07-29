@@ -6,7 +6,7 @@ import logo from "../../assets/images/ei_nutri_logo.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import returnBtn from "../../assets/images/voltar.png";
 import home from "../../assets/images/home.png";
-import { ReviewCard } from "../../components/ReviewCard";
+import { ReviewsNutri } from "../../components/ReviewsNutri/index";
 
 export function NutriProfile() {
   const [admin, setAdmin] = useState({ name: "", email: "" });
@@ -115,22 +115,24 @@ export function NutriProfile() {
         </div>
         <div>
           <div className="block text-lg  mt-6 mb-2 pl-4">
-            <h2 className="font-bold">Suas consultas:</h2>
+            <h2 className="font-bold">Próxima consulta:</h2>
             <h3>
-              {admin.admin.patients.map((currentPatient) => {
+              {/* {console.log(admin.admin.patients[0].name)} */}
+              {admin.admin.patients[0].name}
+              {/* {admin.admin.patients.map((currentPatient) => {
                 return currentPatient.name;
-              })}
+              })} */}
             </h3>
-            <h3>{admin.admin.appointments[0].slice(0, 21)} hrs.</h3>
+            <h3>{admin.admin.appointments[0]}</h3>
           </div>
           <div className="block text-lg mt-6 mb-2 pl-4">
             <h2 className="font-bold">Avaliações recebidas:</h2>
             <h3>
               {" "}
-              {admin.admin.reviews.map((currentReview) => {
+              {admin.admin.reviews.map((currentReview, i) => {
                 return (
-                  <div>
-                    <ReviewCard props={currentReview} />
+                  <div key={i}>
+                    <ReviewsNutri props={currentReview} />
                   </div>
                 );
               })}

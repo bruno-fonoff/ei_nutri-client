@@ -36,7 +36,7 @@ export function NutriSignup() {
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setValue("street", data.logradouro);
         // setAddress(address.street, data.logradouro);
         setValue("neighborhood", data.bairro);
@@ -44,7 +44,7 @@ export function NutriSignup() {
         setValue("uf", data.uf);
         setFocus("number");
         const values = getValues();
-        console.log(values);
+        // console.log(values);
         setAddress({
           ...address,
           street: values.street,
@@ -55,10 +55,10 @@ export function NutriSignup() {
         });
       });
   };
-  console.log(address);
+  // console.log(address);
   function handleAddress(e) {
     setAddress({ ...address, [e.target.name]: e.target.value });
-    console.log(address);
+    // console.log(address);
   }
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -100,7 +100,7 @@ export function NutriSignup() {
         address: address,
         img: imgURL,
       });
-      console.log(response.data);
+      // console.log(response.data);
 
       navigate("/admin/login");
     } catch (error) {
