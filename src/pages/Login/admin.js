@@ -42,7 +42,7 @@ export function NutriLogin() {
       navigate("/admin/profile");
     } catch (error) {
       console.log(error);
-      toast.error("Campo vazio ou incompleto!");
+      toast.error("E-mail ou senha incorreto!");
     }
   }
 

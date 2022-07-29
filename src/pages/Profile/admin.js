@@ -6,7 +6,7 @@ import logo from "../../assets/images/ei_nutri_logo.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import returnBtn from "../../assets/images/voltar.png";
 import home from "../../assets/images/home.png";
-import { ReviewCard } from "../../components/ReviewCard";
+import { ReviewsNutri } from "../../components/ReviewsNutri/index";
 
 export function NutriProfile() {
   const [admin, setAdmin] = useState({ name: "", email: "" });
@@ -127,7 +127,7 @@ export function NutriProfile() {
               {admin.admin.reviews.map((currentReview) => {
                 return (
                   <div>
-                    <ReviewCard props={currentReview} />
+                    <ReviewsNutri props={currentReview} />
                   </div>
                 );
               })}

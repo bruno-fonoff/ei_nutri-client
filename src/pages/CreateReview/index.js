@@ -32,7 +32,7 @@ export function CreateReview() {
     }
     fetchCatalog();
   }, [adminId]);
-  console.log(infoReview);
+  // console.log(infoReview);
   function handleChange(e) {
     setReview({ ...review, [e.target.name]: e.target.value });
   }
@@ -51,7 +51,7 @@ export function CreateReview() {
     }
   }
 
-  console.log(loggedInUser);
+  // console.log(loggedInUser);
 
   return loading ? (
     <div className="spinner-border text-danger" role="status"></div>
@@ -144,9 +144,9 @@ export function CreateReview() {
         </form>
         <div className="block text-lg font-bold mt-6 mb-2 pl-4">
           <h2>Avaliações:</h2>
-          {infoReview.map((currentReview) => {
+          {infoReview.map((currentReview, i) => {
             return (
-              <div>
+              <div key={i}>
                 <ReviewCard props={currentReview} />
               </div>
             );
