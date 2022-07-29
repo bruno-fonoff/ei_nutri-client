@@ -61,11 +61,10 @@ export function EditPatientProfile() {
       const clone = { ...form };
       delete clone._id;
       const imgURL = await handleUpload();
-      const response = await api.patch("/user/update-profile", {
+      await api.patch("/user/update-profile", {
         ...form,
         img: imgURL,
       });
-      console.log(response);
       navigate("/user/profile");
     } catch (error) {
       console.log(error);

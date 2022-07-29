@@ -19,7 +19,6 @@ export function NutriProfile() {
       const response = await api.get("/admin/profile");
       setAdmin(response.data);
       setLoading(false);
-      console.log(response.data.admin.reviews[0]);
     }
     fetchUser();
   }, []);
@@ -41,7 +40,7 @@ export function NutriProfile() {
     navigate("/");
   }
 
-  console.log(admin);
+  // console.log(admin.admin.patients);
 
   return loading ? (
     <div className="spinner-border text-danger" role="status"></div>
@@ -110,24 +109,32 @@ export function NutriProfile() {
             alt="user profile"
             className="sm:h-20 md:h-36 lg:h-36 rounded-full"
           />
-          <h1 className="block sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 pl-4 sm:pt-6 md:pt-14 lg:pt-14 mr-10">
-            Bem vindo, {loggedInUser.user.name} !
+          <h1 className="block sm:text-lg md:text-xl lg:text-2xl  mb-2 pl-4 sm:pt-6 md:pt-14 lg:pt-14 mr-10">
+            Bem vindo, <b>{loggedInUser.user.name}</b> !
           </h1>
         </div>
-
         <div>
-          <div className="block text-lg font-bold mt-6 mb-2 pl-4">
-            <h2>Consultas:{admin.admin.appointments}</h2>
+          <div className="block text-lg  mt-6 mb-2 pl-4">
+            <h2 className="font-bold">Suas consultas:</h2>
+            <h3>
+              {admin.admin.patients.map((currentPatient) => {
+                return currentPatient.name;
+              })}
+            </h3>
+            <h3>{admin.admin.appointments[0].slice(0, 21)} hrs.</h3>
           </div>
-          <div className="block text-lg font-bold mt-6 mb-2 pl-4">
-            <h2>Avaliações:</h2>
-            {admin.admin.reviews.map((currentReview) => {
-              return (
-                <div>
-                  <ReviewCard props={currentReview} />
-                </div>
-              );
-            })}
+          <div className="block text-lg mt-6 mb-2 pl-4">
+            <h2 className="font-bold">Avaliações recebidas:</h2>
+            <h3>
+              {" "}
+              {admin.admin.reviews.map((currentReview) => {
+                return (
+                  <div>
+                    <ReviewCard props={currentReview} />
+                  </div>
+                );
+              })}
+            </h3>
           </div>
         </div>
       </div>
