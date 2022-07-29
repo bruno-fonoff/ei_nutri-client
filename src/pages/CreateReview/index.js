@@ -9,7 +9,7 @@ import home from "../../assets/images/home.png";
 import { ReviewCard } from "../../components/ReviewCard";
 
 export function CreateReview() {
-  const [infoReview, setInfoReview] = useState([{}]);
+  const [infoReview, setInfoReview] = useState({});
   const { adminId } = useParams();
   const navigate = useNavigate();
   const { loggedInUser } = useContext(AuthContext);
@@ -24,7 +24,8 @@ export function CreateReview() {
     async function fetchCatalog() {
       try {
         const response = await api.get(`/user/nutri-profile/${adminId}`);
-        setInfoReview(response.data);
+        setInfoReview(response.data.nutri[0].reviews);
+        console.log(infoReview);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -51,7 +52,7 @@ export function CreateReview() {
     }
   }
 
-  console.log(infoReview.nutri);
+  console.log(loggedInUser);
 
   return loading ? (
     <div className="spinner-border text-danger" role="status"></div>
