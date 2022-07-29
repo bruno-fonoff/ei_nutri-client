@@ -1,8 +1,10 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
+import returnBtn from "../../assets/images/voltar.png";
+import home from "../../assets/images/home.png";
 
 import toast, { Toaster } from "react-hot-toast";
 
@@ -20,6 +22,16 @@ export function NutriLogin() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
+  const inputRef = useRef(null);
+
+  const viewPass = () => {
+    if (inputRef.current.type === "password") {
+      inputRef.current.type = "text";
+    } else {
+      inputRef.current.type = "password";
+    }
+  };
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -36,7 +48,23 @@ export function NutriLogin() {
 
   return (
     <div className=" h-screen w-full">
-      <div className="flex justify-center pt-12 pb-12">
+      <div className="pt-3 bg-amber-600 pb-3 flex justify-between items-center">
+        <Link to="/admin">
+          <img
+            src={returnBtn}
+            alt="retornar pagina"
+            className="h-10 rounded-full ml-8"
+          />
+        </Link>
+        <Link to="/" className="flex justify-center">
+          <img
+            src={home}
+            alt="home button"
+            className="h-10 0 rounded-full mr-8"
+          />
+        </Link>
+      </div>
+      <div className="flex justify-center pt-8 pb-12">
         <img
           src={logo}
           alt="ei nutri logo"
@@ -65,7 +93,14 @@ export function NutriLogin() {
             type="password"
             name="password"
             value={form.password}
+            ref={inputRef}
             onChange={handleChange}
+          />
+          <label className="mr-2">Mostrar Senha</label>
+          <input
+            className="accent-purple-700 mt-4"
+            type="checkbox"
+            onClick={viewPass}
           />
         </div>
         <div className="flex items-center justify-between">

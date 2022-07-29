@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
 import returnBtn from "../../assets/images/voltar.png";
 import toast, { Toaster } from "react-hot-toast";
+import home from "../../assets/images/home.png";
 
 export function PatientSignup() {
   const navigate = useNavigate();
@@ -41,6 +42,16 @@ export function PatientSignup() {
     }
   }
 
+  const inputRef = useRef(null);
+
+  const viewPass = () => {
+    if (inputRef.current.type === "password") {
+      inputRef.current.type = "text";
+    } else {
+      inputRef.current.type = "password";
+    }
+  };
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -56,7 +67,23 @@ export function PatientSignup() {
 
   return (
     <div className="e h-screen w-full">
-      <div className="flex justify-center pt-12">
+      <div className="pt-3 bg-amber-600 pb-3 flex justify-between items-center">
+        <Link to="/user">
+          <img
+            src={returnBtn}
+            alt="retornar pagina"
+            className="h-10 rounded-full ml-8"
+          />
+        </Link>
+        <Link to="/" className="flex justify-center">
+          <img
+            src={home}
+            alt="home button"
+            className="h-10 0 rounded-full mr-8"
+          />
+        </Link>
+      </div>
+      <div className="flex justify-center pt-8 pb-4">
         <img
           src={logo}
           alt="ei nutri logo"
@@ -67,13 +94,7 @@ export function PatientSignup() {
         <div>
           <Toaster />
         </div>
-        <Link to="/user">
-          <img
-            src={returnBtn}
-            alt="retornar pagina"
-            className="h-12 rounded-full ml-8 mb-4"
-          />
-        </Link>
+
         <form className="rounded px-8 pb-8 mb-4" onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-sm font-bold mb-2" htmlFor="formName">
@@ -211,7 +232,14 @@ export function PatientSignup() {
               name="password"
               type="password"
               value={form.password}
+              ref={inputRef}
               onChange={handleChange}
+            />
+            <label className="mr-2">Mostrar Senha</label>
+            <input
+              className="accent-purple-700 mt-4"
+              type="checkbox"
+              onClick={viewPass}
             />
           </div>
           <div className="mb-4">

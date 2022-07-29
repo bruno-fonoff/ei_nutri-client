@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../../api/api";
+import home from "../../assets/images/home.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import logo from "../../assets/images/ei_nutri_logo.jpg";
@@ -115,22 +116,30 @@ export function EditNutriProfile() {
 
   return (
     <div className=" h-full w-full">
-      <div className="flex justify-center pt-12">
+      <div className="pt-3 bg-amber-600 pb-3 flex justify-between items-center">
+        <Link to="/admin/profile">
+          <img
+            src={returnBtn}
+            alt="retornar pagina"
+            className="h-10 rounded-full ml-8"
+          />
+        </Link>
+        <Link to="/" className="flex justify-center">
+          <img
+            src={home}
+            alt="home button"
+            className="h-10 0 rounded-full mr-8"
+          />
+        </Link>
+      </div>
+      <div className="flex justify-center pt-8 pb-4">
         <img
           src={logo}
           alt="ei nutri logo"
           className="sm:h-24 md:h-40 lg:h-56 rounded-full"
         />
       </div>
-      <div>
-        <Link to="/admin/profile">
-          <img
-            src={returnBtn}
-            alt="retornar pagina"
-            className="h-12 rounded-full ml-8 mb-4"
-          />
-        </Link>
-      </div>
+
       <form className="rounded px-8 pb-8" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2" htmlFor="formName">
