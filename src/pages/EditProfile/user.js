@@ -219,9 +219,9 @@ export function EditPatientProfile() {
               />
             </div>
           </div>
-          <div>
+          <div className="flex justify-center">
             <button
-              className="shadow bg-purple-700 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full w-full mt-2"
+              className="shadow bg-purple-700 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full w-50 mt-2"
               type="submit"
             >
               Atualizar cadastro
