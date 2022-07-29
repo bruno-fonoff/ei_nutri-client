@@ -27,19 +27,19 @@ export function Catalog() {
   ) : (
     <div className="bg-amber-600 text-white w-full">
       <div className="flex justify-center pt-12">
-        <img src={logo} alt="ei nutri logo" className="h-12 rounded-full" />
+        <img src={logo} alt="ei nutri logo" className="sm:h-24 md:h-40 lg:h-56 rounded-full" />
       </div>
       <div>
         <Link to="/user/profile">
           <img
             src={returnBtn}
             alt="retornar pagina"
-            className="h-8 rounded-full ml-8"
+            className="h-12 rounded-full ml-8 mb-4"
           />
         </Link>
 
         <div className="mb-4">
-          <h1 className="block text-lg font-bold mb-2 text-center w-full">
+          <h1 className="block sm:text-lg md:text-xl lg:text-2xl font-bold mb-10 text-center w-full">
             Nosso catálogo de nutricionistas!
           </h1>
         </div>

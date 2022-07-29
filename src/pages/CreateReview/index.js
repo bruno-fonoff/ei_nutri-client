@@ -1,19 +1,16 @@
 import { AuthContext } from "../../contexts/authContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { api } from "../../api/api";
 import { Link, useParams, useNavigate } from "react-router-dom";
-// import logo from "../../assets/images/ei_nutri_logo.jpg";
-// import Calendar from "../../components/Calendar";
-// import moment from "moment";
-// import returnBtn from "../../assets/images/voltar.png";
-// import toast, { Toaster } from "react-hot-toast";
+import logo from "../../assets/images/ei_nutri_logo.jpg";
+import returnBtn from "../../assets/images/voltar.png";
+import toast, { Toaster } from "react-hot-toast";
 
 export function CreateReview() {
-  const { userId, adminId } = useParams();
+  const { adminId } = useParams();
   const navigate = useNavigate();
   const { loggedInUser } = useContext(AuthContext);
   const [review, setReview] = useState({
-    owner: "",
     title: "",
     description: "",
     rating: "",
@@ -25,62 +22,42 @@ export function CreateReview() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     try {
-      const response = await api.patch(
-        `/review-added/${loggedInUser}/${adminId}`,
-
-        { ...review }
+      await api.patch(
+        `/review/review-added/${loggedInUser.user._id}/${adminId}`,
+        review
       );
-      console.log(response.data);
-
-      navigate("/user/nutri-profile/review/:adminId");
+      toast.success("Comentário criado com sucesso!");
+      navigate("#");
     } catch (error) {
       console.log(error);
     }
   }
 
+  console.log(review);
+
   return (
     <>
       <div>
-        <h1>Hello!</h1>
+        <div>
+          <Toaster />
+        </div>
+        <div className="flex justify-center pt-12">
+          <img
+            src={logo}
+            alt="ei nutri logo"
+            className="sm:h-24 md:h-40 lg:h-56 rounded-full"
+          />
+        </div>
+        <Link to="/user/catalog">
+          <img
+            src={returnBtn}
+            alt="retornar pagina"
+            className="h-12 rounded-full ml-8 mb-4"
+          />
+        </Link>
+
         <form className="rounded px-8 pb-8" onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-bold mb-2"
-              htmlFor="reviewOwner"
-            >
-              Nome:
-            </label>
-            <input
-              className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none   border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="reviewOwner"
-              name="owner"
-              placeholder="Ex :  Maria Joaquina da Silva"
-              required={true}
-              type="text"
-              value={review.owner}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-bold mb-2"
-              htmlFor="reviewTitle"
-            >
-              Assunto:
-            </label>
-            <input
-              className="focus:ring-4 ring-purple-700 ring-inset shadow appearance-none   border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="reviewTitle"
-              name="title"
-              placeholder="Diga o Assunto do Comentário"
-              required={true}
-              type="text"
-              value={review.title}
-              onChange={handleChange}
-            />
-          </div>
           <div className="mb-4">
             <label
               className="block text-sm font-bold mb-2"

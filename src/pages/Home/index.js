@@ -8,7 +8,7 @@ export function Home() {
         <img
           src={logo}
           alt="ei nutri logo"
-          className="sm:h-24 md:48 lg:h-56 rounded-full"
+          className="sm:h-24 md:h-48 lg:h-72 rounded-full"
         />
       </div>
       <div>

@@ -14,7 +14,7 @@ export default function Calendar({ value, onChange, setDateHour }) {
 
   function handleAddDay(day) {
     setDaySelected(day.format("L"));
-    console.log("setando a data");
+    // console.log("setando a data");
   }
 
   useEffect(() => {
@@ -27,12 +27,12 @@ export default function Calendar({ value, onChange, setDateHour }) {
       new Date(dateString[2], dateString[1] - 1, dateString[0]),
       hour
     );
-    console.log("juntando os dois");
+    // console.log("juntando os dois");
     return selectedHour;
   }
 
   return (
-    <>
+    <div className='flex justify-center'>
       <div className="calendar pt-4">
         <CalendarHeader value={value} setValue={onChange} />
         <div className="body">
@@ -71,7 +71,7 @@ export default function Calendar({ value, onChange, setDateHour }) {
             name="hour"
             onChange={(e) => {
               setHour(e.target.value);
-              console.log("setando a hora");
+              // console.log("setando a hora");
             }}
             defaultValue="08"
           >
@@ -94,6 +94,6 @@ export default function Calendar({ value, onChange, setDateHour }) {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
