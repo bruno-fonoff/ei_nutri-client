@@ -39,6 +39,7 @@ export function NutriProfile() {
     } catch (error) {}
     navigate("/");
   }
+  // let patients = [admin.admin.patients[0].name];
 
   // console.log(admin.admin.patients);
 
@@ -117,8 +118,6 @@ export function NutriProfile() {
           <div className="block text-lg  mt-6 mb-2 pl-4">
             <h2 className="font-bold">Próxima consulta:</h2>
             <h3>
-              {/* {console.log(admin.admin.patients[0].name)} */}
-              {admin.admin.patients[0].name}
               {/* {admin.admin.patients.map((currentPatient) => {
                 return currentPatient.name;
               })} */}
