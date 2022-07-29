@@ -14,8 +14,8 @@ export function ReviewCard({ props }) {
   return (
     <div>
       <div className="mb-1">
-        <p>{props.description}</p>
-        <p>{props.rating}</p>
+        <p className="italic">'" {props.description} "</p>
+        <p className="font-bold text-purple-700">{props.rating}</p>
       </div>
       <div>
         <button

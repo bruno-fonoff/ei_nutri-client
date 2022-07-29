@@ -25,7 +25,6 @@ export function CreateReview() {
       try {
         const response = await api.get(`/user/nutri-profile/${adminId}`);
         setInfoReview(response.data.nutri[0].reviews);
-        console.log(infoReview);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -33,7 +32,7 @@ export function CreateReview() {
     }
     fetchCatalog();
   }, [adminId]);
-
+  console.log(infoReview);
   function handleChange(e) {
     setReview({ ...review, [e.target.name]: e.target.value });
   }
@@ -145,13 +144,13 @@ export function CreateReview() {
         </form>
         <div className="block text-lg font-bold mt-6 mb-2 pl-4">
           <h2>Avaliações:</h2>
-          {/* {infoReview.nutri.reviews.map((currentReview) => {
+          {infoReview.map((currentReview) => {
             return (
               <div>
                 <ReviewCard props={currentReview} />
               </div>
             );
-          })} */}
+          })}
         </div>
       </div>
     </>
