@@ -360,6 +360,7 @@ export function NutriSignup() {
             name="password"
             type="password"
             value={form.password}
+            placeholder="Ex : senha@Segura123"
             onChange={handleChange}
             ref={inputRef}
           />

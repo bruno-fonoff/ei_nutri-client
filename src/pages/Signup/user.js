@@ -235,6 +235,7 @@ export function PatientSignup() {
               name="password"
               type="password"
               value={form.password}
+              placeholder="Ex : senha@Segura123"
               ref={inputRef}
               onChange={handleChange}
             />
