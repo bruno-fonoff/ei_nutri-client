@@ -170,6 +170,7 @@ export function PatientSignup() {
                 name="age"
                 type="age"
                 value={form.age}
+                placeholder="Ex : 55"
                 onChange={handleChange}
               />
             </div>
@@ -186,6 +187,7 @@ export function PatientSignup() {
                 name="weight"
                 type="weight"
                 value={form.weight}
+                placeholder="Ex : 85"
                 onChange={handleChange}
               />
             </div>
@@ -202,6 +204,7 @@ export function PatientSignup() {
                 name="height"
                 type="height"
                 value={form.height}
+                placeholder="Ex : 175"
                 onChange={handleChange}
               />
             </div>
@@ -232,6 +235,7 @@ export function PatientSignup() {
               name="password"
               type="password"
               value={form.password}
+              placeholder="Ex : senha@Segura123"
               ref={inputRef}
               onChange={handleChange}
             />
