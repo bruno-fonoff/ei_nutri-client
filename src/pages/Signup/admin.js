@@ -265,7 +265,7 @@ export function NutriSignup() {
             className="focus:ring-4 ring-purple-700 ring-inset mb-4 shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="address.street"
             name="street"
-            placeholder="Ex :  99999-999"
+            placeholder="Ex :  Rua das Orquideas "
             required={true}
             type="text"
             value={address.street}
